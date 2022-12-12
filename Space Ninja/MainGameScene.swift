@@ -8,6 +8,9 @@
 import SwiftUI
 import SpriteKit
 
+let height = UIScreen.main.bounds.width
+let width = UIScreen.main.bounds.height
+
 // A simple game scene with falling boxes
 class GameScene: SKScene {
     override func didMove(to view: SKView) {
@@ -39,23 +42,25 @@ class GameScene: SKScene {
 
 // A sample SwiftUI creating a GameScene and sizing it
 // at 300x400 points
-struct ContentView: View {
+struct MainGameScene: View {
     var scene: SKScene {
         let scene = GameScene()
-        scene.size = CGSize(width: 300, height: 400)
+        scene.size = CGSize(width: width, height: height)
         scene.scaleMode = .fill
         return scene
     }
 
     var body: some View {
         SpriteView(scene: scene)
-            .frame(width: 300, height: 400)
+            .frame(width: .infinity, height: .infinity)
             .ignoresSafeArea()
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        MainGameScene()
+            .previewInterfaceOrientation(.landscapeLeft)
+            .environment(\.horizontalSizeClass, .compact) // 2
     }
 }
