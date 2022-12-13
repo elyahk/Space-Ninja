@@ -164,6 +164,15 @@ class GameScene: SKScene {
     var timer: Timer? = nil
     var timer2: Timer? = nil
     
+    lazy var planet: SKSpriteNode = {
+        let kyo = SKSpriteNode(imageNamed: "planet_05")
+        kyo.position = CGPoint(x: width / 2, y: height - 100)
+        kyo.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 64, height: 64))
+        kyo.physicsBody?.affectedByGravity = false
+             
+        return kyo
+    }()
+    
     lazy var kyo: KYOPriteNode = {
         let kyo = KYOPriteNode(imageNamed: "kyo_run_01")
         kyo.makeAction(type: .attack)
@@ -210,8 +219,7 @@ class GameScene: SKScene {
         addChild(kyo)
         addChild(shadow)
         addChild(enemy)
-        
-
+        addChild(planet)
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
