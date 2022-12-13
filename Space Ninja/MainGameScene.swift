@@ -14,22 +14,38 @@ let width = UIScreen.main.bounds.height
 // A simple game scene with falling boxes
 
 enum KYOAction: String {
-    case run = "kyo_run"
-    case jump = "kyo_jump"
+    case run
+    case jump
+    case attack
+    case die
+    case shoot
+    case stand
+    case win
+    
+    var actionCounts : Int {
+        switch self {
+        case .run:
+            return 3
+        case .jump:
+            return 3
+        case .attack:
+            return 4
+        case .die:
+            return 13
+        case .shoot:
+            return 5
+        case .stand:
+            return 2
+        case .win:
+            return 8
+        }
+    }
     
     var actionNames: [String] {
         var actions: [String] = []
         
-        switch self {
-        case .jump:
-            actions.append("kyo_run_01")
-            actions.append("kyo_run_02")
-            actions.append("kyo_run_03")
-        
-        case .run:
-            actions.append("kyo_run_01")
-            actions.append("kyo_run_02")
-            actions.append("kyo_run_03")
+        for i in 1...actionCounts {
+            actions.append("kyo_\(self.rawValue)_\(i)")
         }
         
         return actions

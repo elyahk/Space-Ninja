@@ -12,6 +12,9 @@ struct Space_NinjaApp: App {
     var body: some Scene {
         WindowGroup {
             MainGameScene()
+                .previewInterfaceOrientation(.landscapeLeft)
+                .environment(\.horizontalSizeClass, .compact) // 2
+
         }
     }
 }
