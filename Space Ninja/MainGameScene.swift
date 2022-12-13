@@ -8,8 +8,8 @@
 import SwiftUI
 import SpriteKit
 
-let height = UIScreen.main.bounds.width
-let width = UIScreen.main.bounds.height
+let height = UIScreen.main.bounds.height
+let width = UIScreen.main.bounds.width
 
 // A simple game scene with falling boxes
 
@@ -47,13 +47,14 @@ class GameScene: SKScene {
     }()
     
     lazy var kyo: KYO = {
-        let kyo = KYO(texture: SKTexture(imageNamed: "kyo_run_01"), size: .init(width: 64, height: 64))
-        kyo.makeAction(type: .shoot)
+        let kyo = KYO(texture: SKTexture(imageNamed: "kyo_run_01"))
+        kyo.makeAction(type: .stand)
+        kyo.centerRect = CGRect(x: 0, y: 0, width: 30, height: 30)
         kyo.physicsBody?.categoryBitMask = kyoCategory
         kyo.physicsBody?.collisionBitMask = stageCategory
         kyo.anchorPoint = .zero
         kyo.physicsBody = SKPhysicsBody(rectangleOf: kyo.size)
-        kyo.position = CGPoint(x: 10, y: 60)
+        kyo.position = CGPoint(x: 10, y: 100)
         kyo.physicsBody?.allowsRotation = false
         kyo.physicsBody?.isDynamic = true
         kyo.physicsBody?.affectedByGravity = true
@@ -63,7 +64,8 @@ class GameScene: SKScene {
     
     lazy var shadow: Shadow = {
         let shadow = Shadow(imageNamed: "kyo_run_01")
-        shadow.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 64, height: 64))
+        shadow.size = .init(width: 164, height: 164)
+        shadow.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:164, height:164))
         shadow.physicsBody?.allowsRotation = false
         shadow.makeAction(type: .attack1)
         shadow.position = CGPoint(x: width - 100, y: 20)
@@ -78,7 +80,7 @@ class GameScene: SKScene {
         enemy.physicsBody?.categoryBitMask = enemyCategory
         enemy.physicsBody?.collisionBitMask = stageCategory
         enemy.anchorPoint = .zero
-        enemy.position = CGPoint(x: width - 200, y: stage.size.height + 5)
+        enemy.position = CGPoint(x: width - 200, y: stage.size.height + 200)
         enemy.anchorPoint = .zero
 
         return enemy
@@ -86,6 +88,7 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
+        physicsWorld.gravity = CGVector(dx: 0.0, dy: -3.0)
         addChild(background)
         addChild(stage)
         addChild(kyo)
@@ -123,7 +126,7 @@ struct MainGameScene: View {
     var scene: SKScene {
         let scene = GameScene()
         scene.size = CGSize(width: width, height: height)
-        scene.scaleMode = .aspectFill
+        scene.scaleMode = .resizeFill
         return scene
     }
 
