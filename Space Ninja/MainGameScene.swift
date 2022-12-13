@@ -191,9 +191,31 @@ struct MainGameScene: View {
     }
 
     var body: some View {
-        SpriteView(scene: scene)
-            .frame(width: .infinity, height: .infinity)
-            .ignoresSafeArea()
+        ZStack {
+            SpriteView(scene: scene)
+                .frame(width: .infinity, height: .infinity)
+                .ignoresSafeArea()
+            
+            VStack {
+                Spacer()
+                HStack {
+                    Button {
+                        
+                    } label: {
+                        Text("Left")
+                            .foregroundColor(.white)
+                    }
+                    
+                    Button {
+                        
+                    } label: {
+                        Text("Right")
+                            .foregroundColor(.white)
+                    }
+                    Spacer()
+                }
+            }
+        }
     }
 }
 
