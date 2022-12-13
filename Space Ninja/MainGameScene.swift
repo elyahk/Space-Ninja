@@ -18,7 +18,19 @@ enum KYOAction: String {
     case jump = "kyo_jump"
     
     var actionNames: [String] {
-        var actions: [String] = ["kyo_run"]
+        var actions: [String] = []
+        
+        switch self {
+        case .jump:
+            actions.append("kyo_run_01")
+            actions.append("kyo_run_02")
+            actions.append("kyo_run_03")
+        
+        case .run:
+            actions.append("kyo_run_01")
+            actions.append("kyo_run_02")
+            actions.append("kyo_run_03")
+        }
         
         return actions
     }
@@ -26,13 +38,9 @@ enum KYOAction: String {
 
 class KYOPriteNode: SKSpriteNode {
     func makeAction(type action: KYOAction) {
-        let actionTextures =
-        [
-            SKTexture(imageNamed: "kyo_run_01"),
-            SKTexture(imageNamed: "kyo_run_02"),
-            SKTexture(imageNamed: "kyo_run_03")
-        ]
-        
+        let actionTextures: [SKTexture] = action.actionNames.map {
+            SKTexture(imageNamed: $0)
+        }
         let action = SKAction.animate(with: actionTextures, timePerFrame: 0.1, resize: true, restore: true)
         run(SKAction.repeatForever(action))
     }
