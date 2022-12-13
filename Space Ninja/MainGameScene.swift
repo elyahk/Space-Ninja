@@ -158,11 +158,17 @@ class EnemyPriteNode: SKSpriteNode {
 }
 
 class GameScene: SKScene {
+    var background = SKSpriteNode(imageNamed: "starrysky_bg")
+    
+    var stage = SKSpriteNode(imageNamed: "bg_05")
+    
     lazy var kyo: KYOPriteNode = {
         let kyo = KYOPriteNode(imageNamed: "kyo_run_01")
         kyo.makeAction(type: .attack)
-        kyo.position = CGPoint(x: 200, y: 20)
+        kyo.position = CGPoint(x: 230, y: 20)
         kyo.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 64, height: 64))
+        kyo.xScale = 1.5
+        kyo.yScale = 1.5
              
         return kyo
     }()
@@ -172,31 +178,67 @@ class GameScene: SKScene {
         shadow.makeAction(type: .attack1)
         shadow.position = CGPoint(x: width - 100, y: 20)
         shadow.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 64, height: 64))
+        shadow.xScale = 1.5
+        shadow.yScale = 1.5
              
         return shadow
     }()
     
+    lazy var enemy: EnemyPriteNode = {
+        let enemy = EnemyPriteNode(imageNamed: "kyo_run_01")
+        enemy.makeAction(type: .run)
+        enemy.position = CGPoint(x: width - 200, y: 10)
+        enemy.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 64, height: 64))
+        enemy.xScale = 1.5
+        enemy.yScale = 1.5
+        
+        return enemy
+    }()
+    
     override func didMove(to view: SKView) {
         physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
+        background.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
+        background.xScale = 3
         
+        stage.position = CGPoint(x: frame.size.width / 2, y: stage.frame.height / 2)
+        stage.xScale = 3
+        
+        addChild(background)
+        addChild(stage)
         addChild(kyo)
         addChild(shadow)
+        addChild(enemy)
+        
+
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
         let location = touch.location(in: self)
         
-        let enemy = EnemyPriteNode(imageNamed: "kyo_run_01")
-        enemy.makeAction(type: .attack)
-        enemy.position = CGPoint(x: location.x + 50, y: location.y + 50)
-        enemy.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 80, height: 80))
-        addChild(enemy)
+        let shuriken = SKSpriteNode(imageNamed: "shuriken_01")
+        shuriken.position = CGPoint(x: kyo.position.x, y: kyo.position.y + 20)
+        shuriken.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 30, height: 30))
+    
+        shuriken.physicsBody?.categoryBitMask = 0
+        shuriken.physicsBody!.collisionBitMask = 0
+        shuriken.physicsBody?.contactTestBitMask = 10
+        shuriken.physicsBody?.affectedByGravity = false
+        shuriken.physicsBody?.isDynamic = false
+        
+        addChild(shuriken)
         moveLeft()
+        shoot(shuriken: shuriken)
     }
     
     func moveLeft() {
         kyo.position = kyo.position + CGPoint(x: 10, y: 0)
+    }
+    
+    func shoot(shuriken: SKSpriteNode) {
+        shuriken.position = CGPoint(x: shuriken.position.x + 10, y: shuriken.position.y)
+        
+        shoot(shuriken: shuriken)
     }
 }
 
@@ -211,9 +253,14 @@ struct MainGameScene: View {
 
     var body: some View {
         ZStack {
+            Image("starrysky_bg")
+                .resizable()
+                .frame(width: .infinity, height: .infinity)
+            
             SpriteView(scene: scene)
                 .frame(width: .infinity, height: .infinity)
                 .ignoresSafeArea()
+                .background(Color.clear)
             
             VStack {
                 Spacer()
@@ -221,15 +268,17 @@ struct MainGameScene: View {
                     Button {
                         
                     } label: {
-                        Text("Left")
-                            .foregroundColor(.white)
+                        Text("<- ")
+                            .foregroundColor(.yellow)
+                            .font(.system(size: 40, weight: .bold))
                     }
                     
                     Button {
                         
                     } label: {
-                        Text("Right")
-                            .foregroundColor(.white)
+                        Text(" ->")
+                            .foregroundColor(.yellow)
+                            .font(.system(size: 40, weight: .bold))
                     }
                     Spacer()
                 }
