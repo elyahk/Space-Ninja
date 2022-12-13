@@ -105,6 +105,58 @@ class ShadowPriteNode: SKSpriteNode {
     }
 }
 
+enum EnemyType: String {
+    case blue
+    case green
+    case orange
+    case red
+    
+    func actionNames(action: EnemyAction) -> [String] {
+        var actions: [String] = []
+        
+        for i in 1...action.actionCounts {
+            actions.append("enemy_\(self.rawValue)_\(action.rawValue)_\(i)")
+        }
+        
+        return actions
+    }
+}
+
+enum EnemyAction: String {
+    case attack
+    case die
+    case run
+    
+    var actionCounts : Int {
+        switch self {
+        case .attack:
+            return 2
+        case .die:
+            return 5
+        case .run:
+            return 3
+        }
+    }
+}
+
+class EnemyPriteNode: SKSpriteNode {
+    private var type: EnemyType = .blue
+    
+    convenience init(type: EnemyType) {
+        self.init(imageNamed: "")
+        self.type = type
+    }
+    
+    func makeAction(type action: EnemyAction) {
+        let actionTextures: [SKTexture] = type.actionNames(action: action).map {
+            SKTexture(imageNamed: $0)
+        }
+        
+        let action = SKAction.animate(with: actionTextures, timePerFrame: 0.1, resize: true, restore: true)
+        run(SKAction.repeatForever(action))
+    }
+}
+
 
 class GameScene: SKScene {
     override func didMove(to view: SKView) {
@@ -119,13 +171,13 @@ class GameScene: SKScene {
         kyo.position = location
         kyo.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 64, height: 64))
         
-        let shadow = ShadowPriteNode(imageNamed: "kyo_run_01")
-        shadow.makeAction(type: .win)
-        shadow.position = CGPoint(x: location.x + 50, y: location.y + 50)
-        shadow.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 80, height: 80))
+        let enemy = EnemyPriteNode(imageNamed: "kyo_run_01")
+        enemy.makeAction(type: .attack)
+        enemy.position = CGPoint(x: location.x + 50, y: location.y + 50)
+        enemy.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 80, height: 80))
         
         addChild(kyo)
-        addChild(shadow)
+        addChild(enemy)
     }
 }
 
