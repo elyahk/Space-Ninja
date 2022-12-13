@@ -160,10 +160,7 @@ class EnemyPriteNode: SKSpriteNode {
 class GameScene: SKScene {
     var background = SKSpriteNode(imageNamed: "starrysky_bg")
     var stage = SKSpriteNode(imageNamed: "bg_05")
-    
-    var timer: Timer? = nil
-    var timer2: Timer? = nil
-    
+
     lazy var planet: SKSpriteNode = {
         let kyo = SKSpriteNode(imageNamed: "planet_05")
         kyo.position = CGPoint(x: width / 2, y: height - 100)
@@ -174,21 +171,23 @@ class GameScene: SKScene {
     }()
     
     lazy var kyo: KYOPriteNode = {
-        let kyo = KYOPriteNode(imageNamed: "kyo_run_01")
+        let kyo = KYOPriteNode(texture: SKTexture(imageNamed: "kyo_run_01"), size: .init(width: 100, height: 100))
         kyo.makeAction(type: .attack)
         kyo.position = CGPoint(x: 230, y: 20)
-        kyo.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 64, height: 64))
-        kyo.xScale = 1.5
-        kyo.yScale = 1.5
-             
+        kyo.physicsBody = SKPhysicsBody(rectangleOf: kyo.size)
+        kyo.physicsBody?.allowsRotation = false
+        kyo.physicsBody?.isDynamic = true
+        kyo.physicsBody?.affectedByGravity = true
+
         return kyo
     }()
     
     lazy var shadow: ShadowPriteNode = {
         let shadow = ShadowPriteNode(imageNamed: "kyo_run_01")
+        shadow.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 64, height: 64))
+        shadow.physicsBody?.allowsRotation = false
         shadow.makeAction(type: .attack1)
         shadow.position = CGPoint(x: width - 100, y: 20)
-        shadow.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 64, height: 64))
         shadow.xScale = 1.5
         shadow.yScale = 1.5
              
@@ -227,29 +226,23 @@ class GameScene: SKScene {
         let location = touch.location(in: self)
         
         let shuriken = SKSpriteNode(imageNamed: "shuriken_01")
-        shuriken.position = CGPoint(x: kyo.position.x, y: kyo.position.y + 20)
+        shuriken.size = CGSize(width: 30.0, height: 30.0)
+        shuriken.position = CGPoint(x: kyo.position.x + 20, y: kyo.position.y)
         shuriken.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 30, height: 30))
-//        shuriken.physicsBody?.categoryBitMask = 0
-//        shuriken.physicsBody!.collisionBitMask = 0
-//        shuriken.physicsBody?.contactTestBitMask = 10
         shuriken.physicsBody?.affectedByGravity = false
-        shuriken.physicsBody?.isDynamic = false
+        shuriken.physicsBody?.isDynamic = true
         
         addChild(shuriken)
-        moveLeft()
+        kyo.physicsBody?.applyImpulse(CGVector(dx: 50, dy: 0))
         shoot(shuriken: shuriken)
     }
-    
-    func moveLeft() {
 
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        kyo.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 0))
     }
-    
+
     func shoot(shuriken: SKSpriteNode) {
-        let action = SKAction.run {
-            shuriken.position = CGPoint(x: shuriken.position.x + 40, y: shuriken.position.y)
-        }
-        
-        shuriken.run(action)
+        shuriken.physicsBody?.applyImpulse(CGVector(dx: 10, dy: 0))
     }
 }
 
