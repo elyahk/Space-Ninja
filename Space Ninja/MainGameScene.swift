@@ -159,8 +159,10 @@ class EnemyPriteNode: SKSpriteNode {
 
 class GameScene: SKScene {
     var background = SKSpriteNode(imageNamed: "starrysky_bg")
-    
     var stage = SKSpriteNode(imageNamed: "bg_05")
+    
+    var timer: Timer? = nil
+    var timer2: Timer? = nil
     
     lazy var kyo: KYOPriteNode = {
         let kyo = KYOPriteNode(imageNamed: "kyo_run_01")
@@ -219,10 +221,9 @@ class GameScene: SKScene {
         let shuriken = SKSpriteNode(imageNamed: "shuriken_01")
         shuriken.position = CGPoint(x: kyo.position.x, y: kyo.position.y + 20)
         shuriken.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 30, height: 30))
-    
-        shuriken.physicsBody?.categoryBitMask = 0
-        shuriken.physicsBody!.collisionBitMask = 0
-        shuriken.physicsBody?.contactTestBitMask = 10
+//        shuriken.physicsBody?.categoryBitMask = 0
+//        shuriken.physicsBody!.collisionBitMask = 0
+//        shuriken.physicsBody?.contactTestBitMask = 10
         shuriken.physicsBody?.affectedByGravity = false
         shuriken.physicsBody?.isDynamic = false
         
@@ -232,13 +233,15 @@ class GameScene: SKScene {
     }
     
     func moveLeft() {
-        kyo.position = kyo.position + CGPoint(x: 10, y: 0)
+
     }
     
     func shoot(shuriken: SKSpriteNode) {
-        shuriken.position = CGPoint(x: shuriken.position.x + 10, y: shuriken.position.y)
+        let action = SKAction.run {
+            shuriken.position = CGPoint(x: shuriken.position.x + 40, y: shuriken.position.y)
+        }
         
-        shoot(shuriken: shuriken)
+        shuriken.run(action)
     }
 }
 
@@ -264,24 +267,24 @@ struct MainGameScene: View {
             
             VStack {
                 Spacer()
-                HStack {
-                    Button {
-                        
-                    } label: {
-                        Text("<- ")
-                            .foregroundColor(.yellow)
-                            .font(.system(size: 40, weight: .bold))
-                    }
-                    
-                    Button {
-                        
-                    } label: {
-                        Text(" ->")
-                            .foregroundColor(.yellow)
-                            .font(.system(size: 40, weight: .bold))
-                    }
-                    Spacer()
-                }
+//                HStack {
+//                    Button {
+//
+//                    } label: {
+//                        Text("<- ")
+//                            .foregroundColor(.yellow)
+//                            .font(.system(size: 40, weight: .bold))
+//                    }
+//
+//                    Button {
+//
+//                    } label: {
+//                        Text(" ->")
+//                            .foregroundColor(.yellow)
+//                            .font(.system(size: 40, weight: .bold))
+//                    }
+//                    Spacer()
+//                }
             }
         }
     }
