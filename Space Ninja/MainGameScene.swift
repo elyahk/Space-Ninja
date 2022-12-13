@@ -71,7 +71,7 @@ class GameScene: SKScene {
         guard let touch = touches.first else { return }
         let location = touch.location(in: self)
         let kyo = KYOPriteNode(imageNamed: "kyo_run_01")
-        kyo.makeAction(type: .jump)
+        kyo.makeAction(type: .win)
         kyo.position = location
         kyo.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 64, height: 64))
         
