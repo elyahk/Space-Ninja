@@ -62,6 +62,50 @@ class KYOPriteNode: SKSpriteNode {
     }
 }
 
+enum SHadowAction: String {
+    case attack1
+    case attack2
+    case die
+    case stand
+    case win
+    
+    var actionCounts : Int {
+        switch self {
+        case .win:
+            return 4
+        case .stand:
+            return 2
+        case .attack1:
+            return 2
+        case .die:
+            return 13
+        case .attack2:
+            return 9
+        }
+    }
+    
+    var actionNames: [String] {
+        var actions: [String] = []
+        
+        for i in 1...actionCounts {
+            actions.append("shadow_\(self.rawValue)_\(i)")
+        }
+        
+        return actions
+    }
+}
+
+class ShadowPriteNode: SKSpriteNode {
+    func makeAction(type action: SHadowAction) {
+        let actionTextures: [SKTexture] = action.actionNames.map {
+            SKTexture(imageNamed: $0)
+        }
+        let action = SKAction.animate(with: actionTextures, timePerFrame: 0.1, resize: true, restore: true)
+        run(SKAction.repeatForever(action))
+    }
+}
+
+
 class GameScene: SKScene {
     override func didMove(to view: SKView) {
         physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
@@ -75,7 +119,13 @@ class GameScene: SKScene {
         kyo.position = location
         kyo.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 64, height: 64))
         
+        let shadow = ShadowPriteNode(imageNamed: "kyo_run_01")
+        shadow.makeAction(type: .win)
+        shadow.position = CGPoint(x: location.x + 50, y: location.y + 50)
+        shadow.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 80, height: 80))
+        
         addChild(kyo)
+        addChild(shadow)
     }
 }
 
