@@ -64,7 +64,10 @@ struct PlayView: View {
                     .resizable()
                        .frame(width: 100, height: 100)
                 
-                       .opacity(0.5)
+                       .opacity(0.3)
+                
+                       .padding()
+
                 
                 ;
                 Spacer()
@@ -75,14 +78,14 @@ struct PlayView: View {
                     .resizable()
                        .frame(width: 60, height: 60)
                 
-                       .opacity(0.5)
+                       .opacity(0.3)
                 
                 ;
                 VStack {Image ("button2")
                         .resizable()
                            .frame(width: 40, height: 40)
                     
-                           .opacity(0.5)
+                           .opacity(0.3)
                     
                     
                     ;
@@ -93,9 +96,10 @@ struct PlayView: View {
                         .resizable()
                            .frame(width: 60, height: 60)
                     
-                           .opacity(0.5)
+                           .opacity(0.3)
                     
                     ;}
+                
                 
             }
         }
