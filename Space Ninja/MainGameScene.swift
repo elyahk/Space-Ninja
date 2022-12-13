@@ -14,23 +14,46 @@ let width = UIScreen.main.bounds.height
 // A simple game scene with falling boxes
 
 class GameScene: SKScene {
-    var background = SKSpriteNode(imageNamed: "starrysky_bg")
-    var stage = SKSpriteNode(imageNamed: "bg_05")
+    let stageCategory: UInt32 = 0x1 << 1
+    let enemyCategory: UInt32 = 0x1 << 2
+    let kyoCategory: UInt32 = 0x1 << 3
+    let shadowCategory: UInt32 = 0x1 << 4
 
-    lazy var planet: SKSpriteNode = {
-        let kyo = SKSpriteNode(imageNamed: "planet_05")
-        kyo.position = CGPoint(x: width / 2, y: height - 100)
-        kyo.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 64, height: 64))
-        kyo.physicsBody?.affectedByGravity = false
-             
-        return kyo
+    lazy var stage: SKSpriteNode = {
+        let stage = SKSpriteNode(imageNamed: "ground_01")
+        stage.size = CGSize(width: width, height: 100.0)
+        stage.physicsBody?.categoryBitMask = stageCategory
+        stage.physicsBody = SKPhysicsBody(rectangleOf: stage.size)
+        stage.anchorPoint = CGPoint(x: 0, y: 0)
+        stage.position = CGPoint(x: 0, y: 0)
+        stage.physicsBody?.affectedByGravity = false
+        stage.physicsBody?.isDynamic = false
+        stage.zPosition = -1
+
+        return stage
+    }()
+
+    lazy var background: SKSpriteNode = {
+        var background = SKSpriteNode(imageNamed: "main_background")
+        background.size = CGSize(width: width, height: height - stage.size.height)
+        background.physicsBody = SKPhysicsBody(rectangleOf: background.size)
+        background.anchorPoint = CGPoint(x: 0, y: 0)
+        background.position = CGPoint(x: 0, y: stage.size.height)
+        background.physicsBody?.affectedByGravity = false
+        background.physicsBody?.isDynamic = false
+        background.zPosition = -1
+
+        return background
     }()
     
     lazy var kyo: KYO = {
-        let kyo = KYO(texture: SKTexture(imageNamed: "kyo_run_01"), size: .init(width: 100, height: 100))
-        kyo.makeAction(type: .attack)
-        kyo.position = CGPoint(x: 230, y: 20)
+        let kyo = KYO(texture: SKTexture(imageNamed: "kyo_run_01"), size: .init(width: 64, height: 64))
+        kyo.makeAction(type: .shoot)
+        kyo.physicsBody?.categoryBitMask = kyoCategory
+        kyo.physicsBody?.collisionBitMask = stageCategory
+        kyo.anchorPoint = .zero
         kyo.physicsBody = SKPhysicsBody(rectangleOf: kyo.size)
+        kyo.position = CGPoint(x: 10, y: 60)
         kyo.physicsBody?.allowsRotation = false
         kyo.physicsBody?.isDynamic = true
         kyo.physicsBody?.affectedByGravity = true
@@ -44,37 +67,30 @@ class GameScene: SKScene {
         shadow.physicsBody?.allowsRotation = false
         shadow.makeAction(type: .attack1)
         shadow.position = CGPoint(x: width - 100, y: 20)
-        shadow.xScale = 1.5
-        shadow.yScale = 1.5
-             
+
         return shadow
     }()
     
     lazy var enemy: Mice = {
         let enemy = Mice(imageNamed: "kyo_run_01")
         enemy.makeAction(type: .run)
-        enemy.position = CGPoint(x: width - 200, y: 10)
-        enemy.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 64, height: 64))
-        enemy.xScale = 1.5
-        enemy.yScale = 1.5
-        
+        enemy.physicsBody = SKPhysicsBody(rectangleOf: enemy.size)
+        enemy.physicsBody?.categoryBitMask = enemyCategory
+        enemy.physicsBody?.collisionBitMask = stageCategory
+        enemy.anchorPoint = .zero
+        enemy.position = CGPoint(x: width - 200, y: stage.size.height + 5)
+        enemy.anchorPoint = .zero
+
         return enemy
     }()
     
     override func didMove(to view: SKView) {
         physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
-        background.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
-        background.xScale = 3
-        
-        stage.position = CGPoint(x: frame.size.width / 2, y: stage.frame.height / 2)
-        stage.xScale = 3
-        
         addChild(background)
         addChild(stage)
         addChild(kyo)
         addChild(shadow)
         addChild(enemy)
-        addChild(planet)
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -107,41 +123,16 @@ struct MainGameScene: View {
     var scene: SKScene {
         let scene = GameScene()
         scene.size = CGSize(width: width, height: height)
-        scene.scaleMode = .fill
+        scene.scaleMode = .aspectFill
         return scene
     }
 
     var body: some View {
         ZStack {
-            Image("starrysky_bg")
-                .resizable()
-                .frame(width: .infinity, height: .infinity)
-            
             SpriteView(scene: scene)
-                .frame(width: .infinity, height: .infinity)
                 .ignoresSafeArea()
-                .background(Color.clear)
-            
             VStack {
                 Spacer()
-//                HStack {
-//                    Button {
-//
-//                    } label: {
-//                        Text("<- ")
-//                            .foregroundColor(.yellow)
-//                            .font(.system(size: 40, weight: .bold))
-//                    }
-//
-//                    Button {
-//
-//                    } label: {
-//                        Text(" ->")
-//                            .foregroundColor(.yellow)
-//                            .font(.system(size: 40, weight: .bold))
-//                    }
-//                    Spacer()
-//                }
             }
         }
     }

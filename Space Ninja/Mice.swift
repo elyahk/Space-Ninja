@@ -7,6 +7,28 @@
 
 import SpriteKit
 
+
+class Mice: SKSpriteNode {
+    private var type: EnemyType = .blue
+
+    convenience init(type: EnemyType) {
+        self.init(imageNamed: "")
+        self.type = type
+    }
+
+    func makeAction(type action: EnemyAction) {
+        let actionTextures: [SKTexture] = type.actionNames(action: action).map {
+            SKTexture(imageNamed: $0)
+        }
+
+        let action = SKAction.animate(with: actionTextures, timePerFrame: 0.1, resize: true, restore: true)
+        run(SKAction.repeatForever(action))
+    }
+}
+
+
+// MARK: - Type
+
 enum EnemyType: String {
     case blue
     case green
@@ -38,24 +60,6 @@ enum EnemyAction: String {
         case .run:
             return 3
         }
-    }
-}
-
-class Mice: SKSpriteNode {
-    private var type: EnemyType = .blue
-
-    convenience init(type: EnemyType) {
-        self.init(imageNamed: "")
-        self.type = type
-    }
-
-    func makeAction(type action: EnemyAction) {
-        let actionTextures: [SKTexture] = type.actionNames(action: action).map {
-            SKTexture(imageNamed: $0)
-        }
-
-        let action = SKAction.animate(with: actionTextures, timePerFrame: 0.1, resize: true, restore: true)
-        run(SKAction.repeatForever(action))
     }
 }
 
