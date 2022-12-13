@@ -13,15 +13,13 @@ struct PlayView: View {
         VStack {
             HStack{
                 Image("life_icon")
-               
+                    
+
                 Image("wool_ball_icon");
                 Spacer()
                 
-                Image("time_icon")
-                    .resizable(resizingMode: .stretch)
-                    .padding(.leading, -100.0)
-                    .frame(width: /*@START_MENU_TOKEN@*/200.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/200.0/*@END_MENU_TOKEN@*/)
-                    ;
+                
+               
                 
                 Spacer()
             }
@@ -31,10 +29,7 @@ struct PlayView: View {
             Spacer()
             
             HStack {
-                Image ("joypad")
-                    .resizable(capInsets: EdgeInsets(top: -30.0, leading: 0.0, bottom: 0.0, trailing: -160.0))
-                    
-                    ;
+                Image ("joypad");
                 Spacer()
                 Image ("button0");
                 Image ("button1");
