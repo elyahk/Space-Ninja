@@ -13,150 +13,6 @@ let width = UIScreen.main.bounds.height
 
 // A simple game scene with falling boxes
 
-enum KYOAction: String {
-    case run
-    case jump
-    case attack
-    case die
-    case shoot
-    case stand
-    case win
-    
-    var actionCounts : Int {
-        switch self {
-        case .run:
-            return 3
-        case .jump:
-            return 3
-        case .attack:
-            return 4
-        case .die:
-            return 13
-        case .shoot:
-            return 5
-        case .stand:
-            return 2
-        case .win:
-            return 8
-        }
-    }
-    
-    var actionNames: [String] {
-        var actions: [String] = []
-        
-        for i in 1...actionCounts {
-            actions.append("kyo_\(self.rawValue)_\(i)")
-        }
-        
-        return actions
-    }
-}
-
-class KYOPriteNode: SKSpriteNode {
-    func makeAction(type action: KYOAction) {
-        let actionTextures: [SKTexture] = action.actionNames.map {
-            SKTexture(imageNamed: $0)
-        }
-        let action = SKAction.animate(with: actionTextures, timePerFrame: 0.1, resize: true, restore: true)
-        run(SKAction.repeatForever(action))
-    }
-}
-
-enum SHadowAction: String {
-    case attack1
-    case attack2
-    case die
-    case stand
-    case win
-    
-    var actionCounts : Int {
-        switch self {
-        case .win:
-            return 4
-        case .stand:
-            return 2
-        case .attack1:
-            return 2
-        case .die:
-            return 13
-        case .attack2:
-            return 9
-        }
-    }
-    
-    var actionNames: [String] {
-        var actions: [String] = []
-        
-        for i in 1...actionCounts {
-            actions.append("shadow_\(self.rawValue)_\(i)")
-        }
-        
-        return actions
-    }
-}
-
-class ShadowPriteNode: SKSpriteNode {
-    func makeAction(type action: SHadowAction) {
-        let actionTextures: [SKTexture] = action.actionNames.map {
-            SKTexture(imageNamed: $0)
-        }
-        let action = SKAction.animate(with: actionTextures, timePerFrame: 0.1, resize: true, restore: true)
-        run(SKAction.repeatForever(action))
-    }
-}
-
-enum EnemyType: String {
-    case blue
-    case green
-    case orange
-    case red
-    
-    func actionNames(action: EnemyAction) -> [String] {
-        var actions: [String] = []
-        
-        for i in 1...action.actionCounts {
-            actions.append("enemy_\(self.rawValue)_\(action.rawValue)_\(i)")
-        }
-        
-        return actions
-    }
-}
-
-enum EnemyAction: String {
-    case attack
-    case die
-    case run
-    
-    var actionCounts : Int {
-        switch self {
-        case .attack:
-            return 2
-        case .die:
-            return 5
-        case .run:
-            return 3
-        }
-    }
-}
-
-class EnemyPriteNode: SKSpriteNode {
-    private var type: EnemyType = .blue
-    
-    convenience init(type: EnemyType) {
-        self.init(imageNamed: "")
-        self.type = type
-    }
-    
-    func makeAction(type action: EnemyAction) {
-        let actionTextures: [SKTexture] = type.actionNames(action: action).map {
-            SKTexture(imageNamed: $0)
-        }
-        
-        let action = SKAction.animate(with: actionTextures, timePerFrame: 0.1, resize: true, restore: true)
-        run(SKAction.repeatForever(action))
-    }
-}
-
 class GameScene: SKScene {
     var background = SKSpriteNode(imageNamed: "starrysky_bg")
     var stage = SKSpriteNode(imageNamed: "bg_05")
@@ -170,8 +26,8 @@ class GameScene: SKScene {
         return kyo
     }()
     
-    lazy var kyo: KYOPriteNode = {
-        let kyo = KYOPriteNode(texture: SKTexture(imageNamed: "kyo_run_01"), size: .init(width: 100, height: 100))
+    lazy var kyo: KYO = {
+        let kyo = KYO(texture: SKTexture(imageNamed: "kyo_run_01"), size: .init(width: 100, height: 100))
         kyo.makeAction(type: .attack)
         kyo.position = CGPoint(x: 230, y: 20)
         kyo.physicsBody = SKPhysicsBody(rectangleOf: kyo.size)
@@ -182,8 +38,8 @@ class GameScene: SKScene {
         return kyo
     }()
     
-    lazy var shadow: ShadowPriteNode = {
-        let shadow = ShadowPriteNode(imageNamed: "kyo_run_01")
+    lazy var shadow: Shadow = {
+        let shadow = Shadow(imageNamed: "kyo_run_01")
         shadow.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 64, height: 64))
         shadow.physicsBody?.allowsRotation = false
         shadow.makeAction(type: .attack1)
@@ -194,8 +50,8 @@ class GameScene: SKScene {
         return shadow
     }()
     
-    lazy var enemy: EnemyPriteNode = {
-        let enemy = EnemyPriteNode(imageNamed: "kyo_run_01")
+    lazy var enemy: Mice = {
+        let enemy = Mice(imageNamed: "kyo_run_01")
         enemy.makeAction(type: .run)
         enemy.position = CGPoint(x: width - 200, y: 10)
         enemy.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 64, height: 64))
