@@ -157,27 +157,46 @@ class EnemyPriteNode: SKSpriteNode {
     }
 }
 
-
 class GameScene: SKScene {
+    lazy var kyo: KYOPriteNode = {
+        let kyo = KYOPriteNode(imageNamed: "kyo_run_01")
+        kyo.makeAction(type: .attack)
+        kyo.position = CGPoint(x: 200, y: 20)
+        kyo.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 64, height: 64))
+             
+        return kyo
+    }()
+    
+    lazy var shadow: ShadowPriteNode = {
+        let shadow = ShadowPriteNode(imageNamed: "kyo_run_01")
+        shadow.makeAction(type: .attack1)
+        shadow.position = CGPoint(x: width - 100, y: 20)
+        shadow.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 64, height: 64))
+             
+        return shadow
+    }()
+    
     override func didMove(to view: SKView) {
         physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
+        
+        addChild(kyo)
+        addChild(shadow)
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
         let location = touch.location(in: self)
-        let kyo = KYOPriteNode(imageNamed: "kyo_run_01")
-        kyo.makeAction(type: .win)
-        kyo.position = location
-        kyo.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 64, height: 64))
         
         let enemy = EnemyPriteNode(imageNamed: "kyo_run_01")
         enemy.makeAction(type: .attack)
         enemy.position = CGPoint(x: location.x + 50, y: location.y + 50)
         enemy.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 80, height: 80))
-        
-        addChild(kyo)
         addChild(enemy)
+        moveLeft()
+    }
+    
+    func moveLeft() {
+        kyo.position = kyo.position + CGPoint(x: 10, y: 0)
     }
 }
 
@@ -224,5 +243,11 @@ struct ContentView_Previews: PreviewProvider {
         MainGameScene()
             .previewInterfaceOrientation(.landscapeLeft)
             .environment(\.horizontalSizeClass, .compact) // 2
+    }
+}
+
+extension CGPoint {
+    static func +(_ lhs: CGPoint, _ rhs: CGPoint) -> CGPoint {
+        return CGPoint(x: lhs.x + rhs.x, y: lhs.y + rhs.y)
     }
 }
