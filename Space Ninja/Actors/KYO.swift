@@ -28,6 +28,8 @@ class KYO: SKSpriteNode {
     }
 
     func makeAction(type action: KYOAction, repeating: Bool = false) {
+        removeAllActions()
+
         let actionTextures: [SKTexture] = action.actionNames.map {
             SKTexture(imageNamed: $0)
         }
@@ -53,7 +55,6 @@ class KYO: SKSpriteNode {
 
     func stop() {
         physicsBody?.velocity = CGVector(dx: 0, dy: 0)
-        removeAllActions()
         makeAction(type: .stand)
     }
 
