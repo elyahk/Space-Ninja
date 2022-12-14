@@ -9,21 +9,26 @@ import Foundation
 import SpriteKit
 
 struct Names {
-    static let leftButton = "left button"
-    static let rightButton = "right button"
+    static let leftButton = "left"
+    static let rightButton = "right"
+    static let jumpButton = "jump"
+    static let attackButton = "attack"
+    static let shootButton = "shoot"
 }
 
 class GameScene2: SKScene {
+    let emptySpace = 30
+    let bHeight = 40
+
     let stageCategory: UInt32 = 0x1 << 1
     let enemyCategory: UInt32 = 0x1 << 2
     let kyoCategory: UInt32 = 0x1 << 3
     let shadowCategory: UInt32 = 0x1 << 4
 
     lazy var leftButton: SKSpriteNode = {
-        let node = SKSpriteNode(color: UIColor.green, size: .init(width: 50.0, height: 50.0))
+        let node = SKSpriteNode(color: UIColor.green, size: .init(width: bHeight, height: bHeight))
         node.name = Names.leftButton
-        node.anchorPoint = .init(x: 0.5, y: 0.5)
-        node.position = .init(x: 30, y: 30)
+        node.position = .init(x: emptySpace + bHeight, y: bHeight)
         node.physicsBody?.affectedByGravity = false
         node.physicsBody?.isDynamic = false
         node.zPosition = -1
@@ -32,10 +37,9 @@ class GameScene2: SKScene {
     }()
 
     lazy var rightButton: SKSpriteNode = {
-        let node = SKSpriteNode(color: UIColor.green, size: .init(width: 50.0, height: 50.0))
+        let node = SKSpriteNode(color: UIColor.green, size: .init(width: bHeight, height: bHeight))
         node.name = Names.rightButton
-        node.anchorPoint = .init(x: 0.5, y: 0.5)
-        node.position = .init(x: 85, y: 30)
+        node.position = .init(x: emptySpace + bHeight * 2 + 10, y: bHeight)
         node.physicsBody?.affectedByGravity = false
         node.physicsBody?.isDynamic = false
         node.zPosition = -1
@@ -43,6 +47,38 @@ class GameScene2: SKScene {
         return node
     }()
 
+    lazy var attackButton: SKSpriteNode = {
+        let node = SKSpriteNode(color: UIColor.green, size: .init(width: bHeight, height: bHeight))
+        node.name = Names.attackButton
+        node.position = .init(x: Int(width) - emptySpace - bHeight, y: bHeight)
+        node.physicsBody?.affectedByGravity = false
+        node.physicsBody?.isDynamic = false
+        node.zPosition = -1
+
+        return node
+    }()
+
+    lazy var jumpButton: SKSpriteNode = {
+        let node = SKSpriteNode(color: UIColor.green, size: .init(width: self.bHeight, height: self.bHeight))
+        node.name = Names.jumpButton
+        node.position = .init(x: Int(attackButton.position.x) - 20 - bHeight, y: bHeight)
+        node.physicsBody?.affectedByGravity = false
+        node.physicsBody?.isDynamic = false
+        node.zPosition = -1
+
+        return node
+    }()
+
+    lazy var shootButton: SKSpriteNode = {
+        let node = SKSpriteNode(color: UIColor.green, size: .init(width: bHeight, height: bHeight))
+        node.name = Names.shootButton
+        node.position = .init(x: Int(jumpButton.position.x) - 20 - bHeight, y: bHeight)
+        node.physicsBody?.affectedByGravity = false
+        node.physicsBody?.isDynamic = false
+        node.zPosition = -1
+
+        return node
+    }()
 
     lazy var stage: SKSpriteNode = {
         let stage = SKSpriteNode(color: .systemGray, size: .init(width: width, height: 80))
@@ -73,6 +109,9 @@ class GameScene2: SKScene {
         addChild(kyo)
         addChild(leftButton)
         addChild(rightButton)
+        addChild(jumpButton)
+        addChild(shootButton)
+        addChild(attackButton)
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -89,6 +128,14 @@ class GameScene2: SKScene {
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for touch in touches {
+            let location = touch.location(in: self)
+            let touchedNode = atPoint(location)
+
+            if touchedNode.name == Names.leftButton || touchedNode.name == Names.rightButton {
+                stop()
+            }
+        }
     }
 }
 

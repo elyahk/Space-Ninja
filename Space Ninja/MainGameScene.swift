@@ -22,20 +22,6 @@ struct MainGameScene: View {
         ZStack {
             SpriteView(scene: scene)
                 .ignoresSafeArea()
-            VStack {
-                Spacer()
-                HStack {
-                    Button("Left") {
-                        scene.runLeft()
-                    }
-                    .padding()
-                    Button("Right") {
-                        scene.runRight()
-                    }
-                    .padding()
-                    Spacer()
-                }
-            }
         }
     }
 }
