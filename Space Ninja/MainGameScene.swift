@@ -14,7 +14,6 @@ struct MainGameScene: View {
     var scene: GameScene2 {
         let scene = GameScene2()
         scene.scaleMode = .resizeFill
-        
 
         return scene
     }
