@@ -119,10 +119,20 @@ class GameScene2: SKScene {
             let location = touch.location(in: self)
             let touchedNode = atPoint(location)
 
-            if touchedNode.name == Names.leftButton {
+            let name = touchedNode.name
+
+            if name == Names.leftButton {
                 runLeft()
             } else if touchedNode.name == Names.rightButton {
                 runRight()
+            } else if name == Names.jumpButton {
+                jump()
+            } else if name == Names.shootButton {
+                shoot()
+            } else if name == Names.attackButton {
+                attack()
+            } else if name == Names.attackButton {
+
             }
         }
     }

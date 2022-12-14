@@ -30,7 +30,10 @@ class KYO: SKSpriteNode {
             SKTexture(imageNamed: $0)
         }
         let action = SKAction.animate(with: actionTextures, timePerFrame: 0.1, resize: true, restore: true)
-        run(SKAction.repeat(action, count: 1))
+//        run(SKAction.repeat(action, count: 1))
+        run(action) {
+            self.texture = SKTexture(imageNamed: "kyo_attack_1")
+        }
     }
 
     func moveLeft() {
@@ -46,15 +49,15 @@ class KYO: SKSpriteNode {
     }
 
     func jump() {
-        physicsBody?.velocity = CGVector(dx: physicsBody?.velocity.dx ?? 0, dy: 20)
+        physicsBody?.velocity = CGVector(dx: physicsBody?.velocity.dx ?? 0, dy: 200)
     }
 
     func attack() {
-
+        makeAction(type: .attack)
     }
 
     func shoot() {
-
+        makeAction(type: .shoot)
     }
 }
 
