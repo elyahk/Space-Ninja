@@ -47,9 +47,9 @@ class GameScene: SKScene {
     }()
     
     lazy var kyo: KYO = {
-        let kyo = KYO(texture: SKTexture(imageNamed: "kyo_run_01"))
-        kyo.makeAction(type: .stand)
-        kyo.centerRect = CGRect(x: 0, y: 0, width: 30, height: 30)
+        let kyo = KYO(texture: SKTexture(imageNamed: "kyo_attack_1"))
+        kyo.size = CGSize(width: 100, height: 100)
+//        kyo.makeAction(type: .stand)
         kyo.physicsBody?.categoryBitMask = kyoCategory
         kyo.physicsBody?.collisionBitMask = stageCategory
         kyo.anchorPoint = .zero
