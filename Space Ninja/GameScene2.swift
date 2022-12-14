@@ -52,18 +52,36 @@ class GameScene2: SKScene {
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        move()
+        runRight()
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        stop()
+    }
+}
+
+
+extension GameScene2 {
+    func runLeft() {
+        kyo.moveLeft()
     }
 
-    private func move() {
-        kyo.physicsBody?.velocity = CGVector(dx: 100, dy: 0)
+    func runRight() {
+        kyo.moveRight()
     }
 
-    private func stop() {
-//        kyo.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+    func jump() {
+        kyo.jump()
+    }
+
+    func attack() {
+        kyo.attack()
+    }
+
+    func shoot() {
+        kyo.shoot()
+    }
+
+    func stop() {
+        kyo.stop()
     }
 }

@@ -8,16 +8,13 @@
 import SwiftUI
 import SpriteKit
 
-let height = UIScreen.main.bounds.height
-let width = UIScreen.main.bounds.width
-
-
 
 // A sample SwiftUI creating a GameScene and sizing it
 struct MainGameScene: View {
-    var scene: SKScene {
+    var scene: GameScene2 {
         let scene = GameScene2()
         scene.scaleMode = .resizeFill
+        
 
         return scene
     }
@@ -30,11 +27,11 @@ struct MainGameScene: View {
                 Spacer()
                 HStack {
                     Button("Left") {
-
+                        scene.runLeft()
                     }
                     .padding()
-                    Button("Left") {
-
+                    Button("Right") {
+                        scene.runRight()
                     }
                     .padding()
                     Spacer()
