@@ -41,15 +41,14 @@ class GameScene: SKScene {
         background.position = CGPoint(x: 0, y: stage.size.height)
         background.physicsBody?.affectedByGravity = false
         background.physicsBody?.isDynamic = false
-        background.zPosition = -1
+        background.zPosition = 0
 
         return background
     }()
     
     lazy var kyo: KYO = {
         let kyo = KYO(texture: SKTexture(imageNamed: "kyo_attack_1"))
-        kyo.size = CGSize(width: 100, height: 100)
-//        kyo.makeAction(type: .stand)
+        kyo.size = CGSize(width: 50, height: 50)
         kyo.physicsBody?.categoryBitMask = kyoCategory
         kyo.physicsBody?.collisionBitMask = stageCategory
         kyo.anchorPoint = .zero
