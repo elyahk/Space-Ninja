@@ -79,7 +79,7 @@ Image("wool_ball_icon")
             
             
             
-                .background(Image("finalbackground_2")
+                .background(Image("finalbackground")
                     .resizable()
                     .edgesIgnoringSafeArea(.all))
 
