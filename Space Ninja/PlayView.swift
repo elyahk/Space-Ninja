@@ -40,16 +40,27 @@ Image("wool_ball_icon")
                 Spacer()
             }
           Spacer()
-            HStack {
+            HStack (spacing: -90 ) {
                 
                 Button(action: {
                     // Button action here
                 }) {
-                    Image ("joypad")
+                    Image ("joypad_button_left")
                         .resizable()
                         .frame(width: 100, height: 100)
                         .opacity(0.2)
                     .padding([.leading, .bottom], -20.0)}
+                Button(action: {
+                    // Button action here
+                }) {
+                    Image ("joypad_button_right")
+                        .resizable()
+                        .frame(width: 100, height: 100)
+                        .opacity(0.2)
+                    .padding([.leading, .bottom], -20.0)}
+                .padding()
+                
+                
                 ;
                 Spacer()
                 
