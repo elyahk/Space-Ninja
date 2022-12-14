@@ -98,6 +98,12 @@ class GameScene: SKScene {
         return stage
     }()
 
+    lazy var shadow: Shadow = {
+        let shadow = Shadow.makeShadow()
+
+        return shadow
+    }()
+
     lazy var kyo: KYO = {
         return KYO.makeKYO()
     }()
@@ -117,6 +123,7 @@ class GameScene: SKScene {
         addChild(jumpButton)
         addChild(shootButton)
         addChild(attackButton)
+        addChild(shadow)
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -160,7 +167,11 @@ extension GameScene: SKPhysicsContactDelegate {
         let aName = contact.bodyA.node?.name
         let bName = contact.bodyB.node?.name
 
-
+        if aName == Names.shuriken && bName == Names.shadow {
+            contact.bodyA.node?.removeFromParent()
+        } else if aName == Names.shadow && bName == Names.shuriken {
+            contact.bodyB.node?.removeFromParent()
+        }
     }
 }
 
@@ -194,6 +205,8 @@ extension GameScene {
         shuriken.physicsBody?.affectedByGravity = false
         shuriken.physicsBody?.isDynamic = true
         shuriken.physicsBody?.categoryBitMask = PhysicsCategory.shuriken
+        shuriken.physicsBody?.contactTestBitMask = PhysicsCategory.shadow
+        shuriken.name = Names.shuriken
         shurikens.append(shuriken)
 
         addChild(shuriken)

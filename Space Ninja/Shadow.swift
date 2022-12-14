@@ -48,5 +48,23 @@ class Shadow: SKSpriteNode {
         let action = SKAction.animate(with: actionTextures, timePerFrame: 0.1, resize: true, restore: true)
         run(SKAction.repeatForever(action))
     }
+
+    static func makeShadow() -> Shadow {
+        let shadow = Shadow(texture: SKTexture(imageNamed: "shadow_stand_1"))
+        shadow.size = CGSize(width: 60, height: 60)
+        shadow.physicsBody = SKPhysicsBody(rectangleOf: shadow.size)
+        shadow.physicsBody?.allowsRotation = false
+        shadow.physicsBody?.isDynamic = true
+        shadow.physicsBody?.affectedByGravity = true
+        shadow.anchorPoint = .init(x: 0.5, y: 0.5)
+        shadow.position = CGPoint(x: width - 100, y: 200)
+        shadow.physicsBody?.categoryBitMask = PhysicsCategory.shadow
+        shadow.physicsBody?.collisionBitMask = PhysicsCategory.ground
+        shadow.name = Names.shadow
+        shadow.physicsBody?.friction = 0
+
+        return shadow
+    }
+
 }
 
