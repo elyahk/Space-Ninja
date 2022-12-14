@@ -24,7 +24,7 @@ Image("wool_ball_icon")
                     .resizable()
                         .aspectRatio(contentMode: .fill)
                         .padding(.trailing, 1.0)
-                        .frame(width: 40, height: 40)
+                        .frame(width: 50, height: 50)
                 Text("00")
                 Spacer()
 VStack {Text("TIME")
@@ -37,24 +37,40 @@ VStack {Text("TIME")
             }
           Spacer()
             HStack {
-                Image ("joypad")
-                    .resizable()
-                    .frame(width: 100, height: 100)
-                    .opacity(0.3)
-                    .padding()
+                
+                Button(action: {
+                    // Button action here
+                }) {
+                    Image ("joypad")
+                        .resizable()
+                        .frame(width: 100, height: 100)
+                        .opacity(0.3)
+                    .padding()}
                 ;
                 Spacer()
-                Image ("button0")
-                .resizable() .frame(width: 60, height: 60)
-                .opacity(0.3);
-                VStack {Image ("button2")
-                        .resizable()
-                        .frame(width: 40, height: 40)
-                        .opacity(0.3);
-                    Image ("button1")
-                        .resizable()
-                        .frame(width: 60, height: 60)
-                        .opacity(0.3);}}
+                
+                Button(action: {
+                    // Eldor do some magic
+                }) {
+                    Image ("button0")
+                        .resizable() .frame(width: 60, height: 60)
+                    .opacity(0.3)};
+                VStack {
+                    Button(action: {
+                        // Eldor do some magic
+                    }) {
+                        Image ("button2")
+                            .resizable()
+                            .frame(width: 40, height: 40)
+                        .opacity(0.3)};
+                    
+                    Button(action: {
+                        // Eldor do some magic 
+                    }) {
+                        Image ("button1")
+                            .resizable()
+                            .frame(width: 60, height: 60)
+                        .opacity(0.3)};}}
         }
             
             
