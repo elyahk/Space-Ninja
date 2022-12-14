@@ -20,16 +20,20 @@ struct PlayView: View {
                     .padding(.bottom, -5.0)
                     .frame(width: 50, height: 50);
                 Text("7")
+                    .foregroundColor(Color.white)
 Image("wool_ball_icon")
                     .resizable()
                         .aspectRatio(contentMode: .fill)
                         .padding(.trailing, 1.0)
                         .frame(width: 50, height: 50)
                 Text("00")
+                    .foregroundColor(Color.white)
                 Spacer()
-VStack {Text("TIME")
+                VStack {Text("TIME")
+                        .foregroundColor(Color.white)
                         .padding(.leading, -10.0)
-                    Text ("00")
+    Text ("00")
+        .foregroundColor(Color.white)
                         .padding(.leading, -10.0)}
                 .padding();
                 Spacer()
@@ -44,8 +48,8 @@ VStack {Text("TIME")
                     Image ("joypad")
                         .resizable()
                         .frame(width: 100, height: 100)
-                        .opacity(0.3)
-                    .padding()}
+                        .opacity(0.2)
+                    .padding([.leading, .bottom], -20.0)}
                 ;
                 Spacer()
                 
@@ -54,7 +58,7 @@ VStack {Text("TIME")
                 }) {
                     Image ("button0")
                         .resizable() .frame(width: 60, height: 60)
-                    .opacity(0.3)};
+                    .opacity(0.1)};
                 VStack {
                     Button(action: {
                         // Eldor do some magic
@@ -62,15 +66,15 @@ VStack {Text("TIME")
                         Image ("button2")
                             .resizable()
                             .frame(width: 40, height: 40)
-                        .opacity(0.3)};
+                        .opacity(0.1)};
                     
                     Button(action: {
-                        // Eldor do some magic 
+                        // Eldor do some magic
                     }) {
                         Image ("button1")
                             .resizable()
                             .frame(width: 60, height: 60)
-                        .opacity(0.3)};}}
+                        .opacity(0.1)};}}
         }
             
             
