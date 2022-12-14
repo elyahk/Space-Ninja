@@ -19,15 +19,9 @@ struct Names {
     static let shadow = "shadow"
 }
 
-class GameScene: SKScene {
+class Console {
     let emptySpace = 30
     let bHeight = 40
-
-    let stageCategory: UInt32 = 0x1 << 1
-    let enemyCategory: UInt32 = 0x1 << 2
-    let kyoCategory: UInt32 = 0x1 << 3
-    let shadowCategory: UInt32 = 0x1 << 4
-    var shurikens: [SKSpriteNode] = []
 
     lazy var leftButton: SKSpriteNode = {
         let node = SKSpriteNode(color: UIColor.green, size: .init(width: bHeight, height: bHeight))
@@ -84,6 +78,17 @@ class GameScene: SKScene {
         return node
     }()
 
+
+}
+
+class GameScene: SKScene {
+    let stageCategory: UInt32 = 0x1 << 1
+    let enemyCategory: UInt32 = 0x1 << 2
+    let kyoCategory: UInt32 = 0x1 << 3
+    let shadowCategory: UInt32 = 0x1 << 4
+    var shurikens: [SKSpriteNode] = []
+    var console: Console = .init()
+
     lazy var stage: SKSpriteNode = {
         let stage = SKSpriteNode(color: .systemGray, size: .init(width: width, height: 80))
         stage.anchorPoint = .init(x: 0.5, y: 0.5)
@@ -118,12 +123,12 @@ class GameScene: SKScene {
         physicsWorld.contactDelegate = self
         addChild(stage)
         addChild(kyo)
-        addChild(leftButton)
-        addChild(rightButton)
-        addChild(jumpButton)
-        addChild(shootButton)
-        addChild(attackButton)
         addChild(shadow)
+        addChild(console.leftButton)
+        addChild(console.rightButton)
+        addChild(console.jumpButton)
+        addChild(console.shootButton)
+        addChild(console.attackButton)
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
