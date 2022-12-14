@@ -87,6 +87,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6E58382F294A216C00006851 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				6E58382D294A214000006851 /* CGPoint + Extension.swift */,
+				6E58382B2949F41400006851 /* Utils.swift */,
+				6E5838292949F31900006851 /* PhysicsCategory.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		6E583830294A217400006851 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				6E5838272949F1E700006851 /* GameScene.swift */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		6E583831294A217F00006851 /* Actors */ = {
+			isa = PBXGroup;
+			children = (
+				6E156A7029491F1D007717D8 /* Mice.swift */,
+				6E156A6E29491F07007717D8 /* Shadow.swift */,
+				6E156A6C29491EE9007717D8 /* KYO.swift */,
+			);
+			path = Actors;
+			sourceTree = "<group>";
+		};
 		6E6B310429477845001C9D48 = {
 			isa = PBXGroup;
 			children = (
@@ -112,13 +140,9 @@
 			children = (
 				6E6B311029477845001C9D48 /* Space_NinjaApp.swift */,
 				6E6B311229477845001C9D48 /* MainGameScene.swift */,
-				6E58382D294A214000006851 /* CGPoint + Extension.swift */,
-				6E58382B2949F41400006851 /* Utils.swift */,
-				6E5838292949F31900006851 /* PhysicsCategory.swift */,
-				6E5838272949F1E700006851 /* GameScene.swift */,
-				6E156A7029491F1D007717D8 /* Mice.swift */,
-				6E156A6E29491F07007717D8 /* Shadow.swift */,
-				6E156A6C29491EE9007717D8 /* KYO.swift */,
+				6E58382F294A216C00006851 /* Helpers */,
+				6E583830294A217400006851 /* Scene */,
+				6E583831294A217F00006851 /* Actors */,
 				6E7F0F5F2948CBE00039CFB4 /* PlayView.swift */,
 				6E6B311429477846001C9D48 /* Assets.xcassets */,
 				6E6B311629477846001C9D48 /* Preview Content */,
