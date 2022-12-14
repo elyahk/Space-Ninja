@@ -11,8 +11,8 @@ import SpriteKit
 
 // A sample SwiftUI creating a GameScene and sizing it
 struct MainGameScene: View {
-    var scene: GameScene2 {
-        let scene = GameScene2()
+    var scene: GameScene {
+        let scene = GameScene()
         scene.scaleMode = .resizeFill
 
         return scene

@@ -16,7 +16,7 @@ struct Names {
     static let shootButton = "shoot"
 }
 
-class GameScene2: SKScene {
+class GameScene: SKScene {
     let emptySpace = 30
     let bHeight = 40
 
@@ -150,7 +150,7 @@ class GameScene2: SKScene {
 }
 
 
-extension GameScene2 {
+extension GameScene {
     func runLeft() {
         kyo.moveLeft()
     }
