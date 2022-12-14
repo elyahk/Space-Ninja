@@ -224,3 +224,12 @@ extension CGPoint {
         return CGPoint(x: lhs.x + rhs.x, y: lhs.y + rhs.y)
     }
 }
+
+
+struct PhysicsCategory {
+    static let none: UInt32 = 0
+    static let kyo: UInt32 = 0x1 << 1
+    static let shadow: UInt32 = 0x1 << 2
+    static let enemy: UInt32 = 0x1 << 3
+    static let ground: UInt32 = 0x1 << 4
+}
