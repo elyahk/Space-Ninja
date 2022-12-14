@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D8BA4E8294A2A5000E9FDFF /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8BA4E7294A2A5000E9FDFF /* MainScreen.swift */; };
 		6E156A6D29491EE9007717D8 /* KYO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E156A6C29491EE9007717D8 /* KYO.swift */; };
 		6E156A6F29491F07007717D8 /* Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E156A6E29491F07007717D8 /* Shadow.swift */; };
 		6E156A7129491F1D007717D8 /* Mice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E156A7029491F1D007717D8 /* Mice.swift */; };
@@ -46,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4D8BA4E7294A2A5000E9FDFF /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
 		6E156A6C29491EE9007717D8 /* KYO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KYO.swift; sourceTree = "<group>"; };
 		6E156A6E29491F07007717D8 /* Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shadow.swift; sourceTree = "<group>"; };
 		6E156A7029491F1D007717D8 /* Mice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mice.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 			children = (
 				6E6B311029477845001C9D48 /* Space_NinjaApp.swift */,
 				6E6B311229477845001C9D48 /* MainGameScene.swift */,
+				4D8BA4E7294A2A5000E9FDFF /* MainScreen.swift */,
 				6E58382F294A216C00006851 /* Helpers */,
 				6E583830294A217400006851 /* Scene */,
 				6E583831294A217F00006851 /* Actors */,
@@ -322,6 +325,7 @@
 				6E156A7129491F1D007717D8 /* Mice.swift in Sources */,
 				6E58382C2949F41400006851 /* Utils.swift in Sources */,
 				6E5838282949F1E700006851 /* GameScene.swift in Sources */,
+				4D8BA4E8294A2A5000E9FDFF /* MainScreen.swift in Sources */,
 				6E7F0F602948CBE00039CFB4 /* PlayView.swift in Sources */,
 				6E58382E294A214000006851 /* CGPoint + Extension.swift in Sources */,
 				6E156A6D29491EE9007717D8 /* KYO.swift in Sources */,
