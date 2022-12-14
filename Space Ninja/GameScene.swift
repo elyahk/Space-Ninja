@@ -14,6 +14,9 @@ struct Names {
     static let jumpButton = "jump"
     static let attackButton = "attack"
     static let shootButton = "shoot"
+    static let shuriken = "shuriken"
+    static let kyo = "kyo"
+    static let shadow = "shadow"
 }
 
 class GameScene: SKScene {
@@ -24,6 +27,7 @@ class GameScene: SKScene {
     let enemyCategory: UInt32 = 0x1 << 2
     let kyoCategory: UInt32 = 0x1 << 3
     let shadowCategory: UInt32 = 0x1 << 4
+    var shurikens: [SKSpriteNode] = []
 
     lazy var leftButton: SKSpriteNode = {
         let node = SKSpriteNode(color: UIColor.green, size: .init(width: bHeight, height: bHeight))
@@ -105,6 +109,7 @@ class GameScene: SKScene {
     private func configure() {
         physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
         physicsWorld.gravity = CGVector(dx: 0.0, dy: -3.0)
+        physicsWorld.contactDelegate = self
         addChild(stage)
         addChild(kyo)
         addChild(leftButton)
@@ -150,6 +155,15 @@ class GameScene: SKScene {
 }
 
 
+extension GameScene: SKPhysicsContactDelegate {
+    func didBegin(_ contact: SKPhysicsContact) {
+        let aName = contact.bodyA.node?.name
+        let bName = contact.bodyB.node?.name
+
+
+    }
+}
+
 extension GameScene {
     func runLeft() {
         kyo.moveLeft()
@@ -169,6 +183,22 @@ extension GameScene {
 
     func shoot() {
         kyo.shoot()
+        shootShuriken()
+    }
+
+    func shootShuriken() {
+        let shuriken = SKSpriteNode(imageNamed: "shuriken_01")
+        shuriken.size = CGSize(width: 30.0, height: 30.0)
+        shuriken.position = CGPoint(x: kyo.position.x + 20, y: kyo.position.y)
+        shuriken.physicsBody = SKPhysicsBody(rectangleOf: shuriken.size)
+        shuriken.physicsBody?.affectedByGravity = false
+        shuriken.physicsBody?.isDynamic = true
+        shuriken.physicsBody?.categoryBitMask = PhysicsCategory.shuriken
+        shurikens.append(shuriken)
+
+        addChild(shuriken)
+
+        shuriken.physicsBody?.applyImpulse(CGVector(dx: 50, dy: 0))
     }
 
     func stop() {

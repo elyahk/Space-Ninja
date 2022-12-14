@@ -13,4 +13,5 @@ struct PhysicsCategory {
     static let shadow: UInt32 = 0x1 << 2
     static let enemy: UInt32 = 0x1 << 3
     static let ground: UInt32 = 0x1 << 4
+    static let shuriken: UInt32 = 0x1 << 5
 }
