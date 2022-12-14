@@ -9,9 +9,11 @@ import Foundation
 import SpriteKit
 
 class KYO: SKSpriteNode {
+    static var width: CGFloat { 50.0 }
+
     static func makeKYO() -> KYO {
         let kyo = KYO(texture: SKTexture(imageNamed: "kyo_attack_1"))
-        kyo.size = CGSize(width: 50, height: 50)
+        kyo.size = CGSize(width: width, height: width)
         kyo.physicsBody = SKPhysicsBody(rectangleOf: kyo.size)
         kyo.physicsBody?.allowsRotation = false
         kyo.physicsBody?.isDynamic = true
@@ -25,31 +27,39 @@ class KYO: SKSpriteNode {
         return kyo
     }
 
-    func makeAction(type action: KYOAction) {
+    func makeAction(type action: KYOAction, repeating: Bool = false) {
         let actionTextures: [SKTexture] = action.actionNames.map {
             SKTexture(imageNamed: $0)
         }
-        let action = SKAction.animate(with: actionTextures, timePerFrame: 0.1, resize: true, restore: true)
-//        run(SKAction.repeat(action, count: 1))
-        run(action) {
-            self.texture = SKTexture(imageNamed: "kyo_attack_1")
+        let action = SKAction.animate(with: actionTextures, timePerFrame: 0.1, resize: false, restore: true)
+
+        run(SKAction.repeat(action, count: repeating ? 100 : 1)) {
+            if !repeating {
+                self.texture = SKTexture(imageNamed: "kyo_attack_1")
+                self.size = CGSize(width: KYO.width, height: KYO.width)
+            }
         }
     }
 
     func moveLeft() {
         physicsBody?.velocity = CGVector(dx: -130, dy: 0)
+        makeAction(type: .run, repeating: true)
     }
 
     func moveRight() {
         physicsBody?.velocity = CGVector(dx: 130, dy: 0)
+        makeAction(type: .run, repeating: true)
     }
 
     func stop() {
         physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+        removeAllActions()
+        makeAction(type: .stand)
     }
 
     func jump() {
         physicsBody?.velocity = CGVector(dx: physicsBody?.velocity.dx ?? 0, dy: 200)
+        makeAction(type: .jump)
     }
 
     func attack() {
