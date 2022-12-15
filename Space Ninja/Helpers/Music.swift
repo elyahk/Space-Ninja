@@ -8,8 +8,9 @@
 import Foundation
 
 struct Music {
-    static let background = "background_music"
-    static let pressButton = "press_play_button"
-    static let shadowAppear = "shadow_appear"
+    static let background = "background_music.mp3"
+    static let pressButton = "press_play_button.mp3"
+    static let shadowAppear = "shadow_appear.mp3"
+    static let jump = "soundeffect_ jump.wav"
 }
 

@@ -8,6 +8,11 @@
 import Foundation
 import SpriteKit
 
+enum MusicType {
+    case none
+    case jump
+}
+
 class KYO: SKSpriteNode {
     static var width: CGFloat { 50.0 }
 
@@ -27,15 +32,25 @@ class KYO: SKSpriteNode {
         return kyo
     }
 
-    func makeAction(type action: KYOAction, repeating: Bool = false) {
+    func makeAction(type action: KYOAction, repeating: Bool = false, music: MusicType = .none) {
         removeAllActions()
 
         let actionTextures: [SKTexture] = action.actionNames.map {
             SKTexture(imageNamed: $0)
         }
         let action = SKAction.animate(with: actionTextures, timePerFrame: 0.1, resize: false, restore: true)
+        var actions = [action]
 
-        run(SKAction.repeat(action, count: repeating ? 100 : 1)) {
+        switch music {
+        case .none: break
+        case .jump:
+            let music = SKAction.playSoundFileNamed(Music.jump, waitForCompletion: true)
+            actions.append(music)
+        }
+
+        let finalAction = SKAction.sequence(actions)
+
+        run(SKAction.repeat(finalAction, count: repeating ? 100 : 1)) {
             if !repeating {
                 self.texture = SKTexture(imageNamed: "kyo_attack_1")
                 self.size = CGSize(width: KYO.width, height: KYO.width)
@@ -64,7 +79,7 @@ class KYO: SKSpriteNode {
     }
 
     func attack() {
-        makeAction(type: .attack)
+        makeAction(type: .attack, music: .jump)
     }
 
     func shoot() {
