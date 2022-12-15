@@ -30,6 +30,55 @@ class GameScene: SKScene {
         return stage
     }()
 
+    lazy var background: SKSpriteNode = {
+        let stage = SKSpriteNode(texture: SKTexture(imageNamed: "finalbackground"), size: .init(width: width, height: height))
+        stage.anchorPoint = .init(x: 0.5, y: 0.5)
+        stage.position = .init(x: width / 2, y: height / 2 )
+        stage.zPosition = -10
+
+        return stage
+    }()
+
+    lazy var planet1: SKSpriteNode = {
+        let stage = SKSpriteNode(texture: SKTexture(imageNamed: "planet_01"))
+        stage.size = .init(width: 100, height: 100)
+        stage.anchorPoint = .init(x: 0.5, y: 0.5)
+        stage.position = .init(x: width / 2, y: height / 2 )
+        stage.zPosition = -2
+
+        return stage
+    }()
+
+    lazy var planet2: SKSpriteNode = {
+        let stage = SKSpriteNode(texture: SKTexture(imageNamed: "planet_01"))
+        stage.size = .init(width: 100, height: 100)
+        stage.anchorPoint = .init(x: 0.5, y: 0.5)
+        stage.position = .init(x: width / 2, y: height / 2 )
+        stage.zPosition = -2
+
+        return stage
+    }()
+
+    lazy var planet3: SKSpriteNode = {
+        let stage = SKSpriteNode(texture: SKTexture(imageNamed: "planet_01"))
+        stage.size = .init(width: 100, height: 100)
+        stage.anchorPoint = .init(x: 0.5, y: 0.5)
+        stage.position = .init(x: width / 2, y: height / 2 )
+        stage.zPosition = -2
+
+        return stage
+    }()
+
+    lazy var planet4: SKSpriteNode = {
+        let stage = SKSpriteNode(texture: SKTexture(imageNamed: "planet_01"))
+        stage.size = .init(width: 100, height: 100)
+        stage.anchorPoint = .init(x: 0.5, y: 0.5)
+        stage.position = .init(x: width / 2, y: height / 2 )
+        stage.zPosition = -2
+
+        return stage
+    }()
+
     lazy var shadow: Shadow = {
         let shadow = Shadow.makeShadow()
 
@@ -48,6 +97,11 @@ class GameScene: SKScene {
         physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
         physicsWorld.gravity = CGVector(dx: 0.0, dy: -3.0)
         physicsWorld.contactDelegate = self
+        addChild(background)
+        addChild(planet1)
+        addChild(planet2)
+        addChild(planet3)
+        addChild(planet4)
         addChild(stage)
         addChild(kyo)
         addChild(shadow)
