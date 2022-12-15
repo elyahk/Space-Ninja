@@ -57,10 +57,11 @@ class Shadow: SKSpriteNode {
         shadow.physicsBody?.isDynamic = true
         shadow.physicsBody?.affectedByGravity = true
         shadow.anchorPoint = .init(x: 0.5, y: 0.5)
-        shadow.position = CGPoint(x: width - 100, y: 200)
+        shadow.position = CGPoint(x: width - 60, y: 200)
         shadow.physicsBody?.categoryBitMask = PhysicsCategory.shadow
         shadow.physicsBody?.collisionBitMask = PhysicsCategory.ground
         shadow.name = Names.shadow
+        shadow.makeAction(type: .attack2)
         shadow.physicsBody?.friction = 0
         scene.addChild(shadow)
 

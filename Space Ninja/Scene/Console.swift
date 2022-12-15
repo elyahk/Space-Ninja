@@ -9,13 +9,14 @@ import SpriteKit
 
 class Console {
     let emptySpace = 30
-    let bHeight = 40
+    let bHeight = 60
+    let yPosition = 45
 
     lazy var leftButton: SKSpriteNode = {
         let node = SKSpriteNode(texture: SKTexture(imageNamed: .rightRunImage))
         node.size = .init(width: bHeight * 1, height: bHeight)
         node.name = Names.leftButton
-        node.position = .init(x: emptySpace + bHeight, y: bHeight)
+        node.position = .init(x: emptySpace + bHeight, y: yPosition)
         node.physicsBody?.affectedByGravity = false
         node.physicsBody?.isDynamic = false
         node.zPosition = -1
@@ -27,7 +28,7 @@ class Console {
         let node = SKSpriteNode(texture: SKTexture(imageNamed: .leftRunImage))
         node.size = .init(width: bHeight * 1, height: bHeight)
         node.name = Names.rightButton
-        node.position = .init(x: emptySpace + bHeight * 2 + 10, y: bHeight)
+        node.position = .init(x: emptySpace + bHeight * 2 + 10, y: yPosition)
         node.physicsBody?.affectedByGravity = false
         node.physicsBody?.isDynamic = false
         node.zPosition = -1
@@ -39,7 +40,7 @@ class Console {
         let node = SKSpriteNode(texture: SKTexture(imageNamed: .swordImage))
         node.size = .init(width: bHeight, height: bHeight)
         node.name = Names.attackButton
-        node.position = .init(x: Int(width) - emptySpace - bHeight, y: bHeight)
+        node.position = .init(x: Int(width) - emptySpace - bHeight, y: yPosition)
         node.physicsBody?.affectedByGravity = false
         node.physicsBody?.isDynamic = false
         node.zPosition = -1
@@ -51,7 +52,7 @@ class Console {
         let node = SKSpriteNode(texture: SKTexture(imageNamed: .jumpImage))
         node.size = .init(width: bHeight, height: bHeight)
         node.name = Names.jumpButton
-        node.position = .init(x: Int(attackButton.position.x) - 20 - bHeight, y: bHeight)
+        node.position = .init(x: Int(attackButton.position.x) - 20 - bHeight, y: yPosition)
         node.physicsBody?.affectedByGravity = false
         node.physicsBody?.isDynamic = false
         node.zPosition = -1
@@ -63,7 +64,7 @@ class Console {
         let node = SKSpriteNode(texture: SKTexture(imageNamed: .shurikenImage))
         node.size = .init(width: bHeight, height: bHeight)
         node.name = Names.shootButton
-        node.position = .init(x: Int(jumpButton.position.x) - 20 - bHeight, y: bHeight)
+        node.position = .init(x: Int(jumpButton.position.x) - 20 - bHeight, y: yPosition)
         node.physicsBody?.affectedByGravity = false
         node.physicsBody?.isDynamic = false
         node.zPosition = -1
