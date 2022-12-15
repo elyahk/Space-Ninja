@@ -16,20 +16,51 @@ class Mice: SKSpriteNode {
         self.type = type
     }
 
-    func makeAction(type action: EnemyAction) {
+    func makeAction(type action: EnemyAction, repeated: Bool = true, timePerFrame: TimeInterval = 0.1, completion: @escaping () -> Void = { }) {
         let actionTextures: [SKTexture] = type.actionNames(action: action).map {
             SKTexture(imageNamed: $0)
         }
 
-        let action = SKAction.animate(with: actionTextures, timePerFrame: 0.1, resize: true, restore: true)
-        run(SKAction.repeatForever(action))
+        let action = SKAction.animate(with: actionTextures, timePerFrame: timePerFrame, resize: false, restore: true)
+        let finalAction = repeated ? SKAction.repeatForever(action) : action
+        run(finalAction) {
+            completion()
+        }
+    }
+
+    func die() {
+        makeAction(type: .die, repeated: false, timePerFrame: 0.05) { [weak self] in
+            self?.removeFromParent()
+        }
+    }
+
+    static func addMice(type: EnemyType, for scene: GameScene) -> Mice {
+        let mice = Mice(imageNamed: "")
+        mice.size = CGSize(width: 45, height: 45)
+        mice.physicsBody = SKPhysicsBody(rectangleOf: mice.size)
+        mice.physicsBody?.allowsRotation = false
+        mice.physicsBody?.isDynamic = true
+        mice.physicsBody?.affectedByGravity = true
+        mice.anchorPoint = .init(x: 0.5, y: 0.5)
+        mice.position = CGPoint(x: width - 100, y: 120)
+        mice.name = Names.mice
+        mice.physicsBody?.contactTestBitMask = PhysicsCategory.shuriken
+        mice.physicsBody?.categoryBitMask = PhysicsCategory.mice
+        mice.physicsBody?.collisionBitMask = PhysicsCategory.ground
+        mice.physicsBody?.friction = 0
+        mice.physicsBody?.velocity = CGVector(dx: -100, dy: 0)
+        mice.makeAction(type: .run)
+
+        scene.addChild(mice)
+
+        return mice
     }
 }
 
 
 // MARK: - Type
 
-enum EnemyType: String {
+enum EnemyType: String, CaseIterable {
     case blue
     case green
     case orange

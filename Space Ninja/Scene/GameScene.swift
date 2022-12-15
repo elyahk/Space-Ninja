@@ -10,26 +10,41 @@ import SpriteKit
 
 
 class GameController {
-    func makeEnemy(type: EnemyType, for scene: GameScene) -> Mice {
-        let mice = Mice(imageNamed: "")
-        mice.size = CGSize(width: 45, height: 45)
-        mice.physicsBody = SKPhysicsBody(rectangleOf: mice.size)
-        mice.physicsBody?.allowsRotation = false
-        mice.physicsBody?.isDynamic = true
-        mice.physicsBody?.affectedByGravity = true
-        mice.anchorPoint = .init(x: 0.5, y: 0.5)
-        mice.position = CGPoint(x: width - 100, y: 120)
-        mice.name = Names.mice
-        mice.physicsBody?.contactTestBitMask = PhysicsCategory.shuriken
-        mice.physicsBody?.categoryBitMask = PhysicsCategory.mice
-        mice.physicsBody?.collisionBitMask = PhysicsCategory.ground
-        mice.physicsBody?.friction = 0
-        mice.physicsBody?.velocity = CGVector(dx: -100, dy: 0)
-        mice.makeAction(type: .run)
+    let scene: GameScene
 
-        scene.addChild(mice)
+    init(scene: GameScene) {
+        self.scene = scene
+        randomMice()
+        randomMeteor()
+    }
 
-        return mice
+    func addMice() {
+        guard let randomType = EnemyType.allCases.randomElement() else { return }
+
+        _ = Mice.addMice(type: randomType, for: scene)
+    }
+
+    func addMeteor() {
+        guard let randomType = MeteorType.allCases.randomElement() else { return }
+
+        let random = CGFloat.random(in: 100...(width - 50))
+        _ = Meteor.addMeteor(type: randomType, for: scene, position: .init(x: random, y: height - 50))
+    }
+
+    func randomMeteor() {
+        let random = Int.random(in: 1000...4000)
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(random)) { [weak self] in
+            self?.addMeteor()
+            self?.randomMeteor()
+        }
+    }
+
+    func randomMice() {
+        let random = Int.random(in: 300...1000)
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(random)) { [weak self] in
+            self?.addMice()
+            self?.randomMice()
+        }
     }
 }
 
@@ -39,7 +54,7 @@ class GameScene: SKScene {
     var console: Console = .init()
     var bacgroundScene: BackgroundScene = .init()
     var shurikens: [SKSpriteNode] = []
-    var gameController = GameController()
+    lazy var gameController = { GameController(scene: self) }()
     lazy var shadow: Shadow = { Shadow.addShadow(for: self) }()
     lazy var kyo: KYO = { KYO.addKYO(for: self) }()
 
@@ -63,6 +78,7 @@ class GameScene: SKScene {
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
+            _ = gameController
             let location = touch.location(in: self)
             let touchedNode = atPoint(location)
 
@@ -78,13 +94,8 @@ class GameScene: SKScene {
                 shoot()
             } else if name == Names.attackButton {
                 attack()
-            } else if name == Names.attackButton {
-
             }
         }
-
-        let mice = gameController.makeEnemy(type: .red, for: self)
-        mices.append(mice)
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -104,16 +115,41 @@ extension GameScene: SKPhysicsContactDelegate {
         let aName = contact.bodyA.node?.name
         let bName = contact.bodyB.node?.name
 
+        guard let aCategory = contact.bodyA.node?.physicsBody?.categoryBitMask,
+              let bCategory = contact.bodyB.node?.physicsBody?.categoryBitMask else { return }
+
         if aName == Names.shuriken && bName == Names.shadow {
             contact.bodyA.node?.removeFromParent()
         } else if aName == Names.shadow && bName == Names.shuriken {
             contact.bodyB.node?.removeFromParent()
-        } else if aName == Names.shuriken && bName == Names.mice {
-            contact.bodyA.node?.removeFromParent()
-            contact.bodyB.node?.removeFromParent()
-        } else if aName == Names.mice && bName == Names.shuriken {
-            contact.bodyB.node?.removeFromParent()
-            contact.bodyA.node?.removeFromParent()
+        } else if aName == Names.shuriken && bName == Names.mice || aName == Names.mice && bName == Names.shuriken {
+            miceDie(contact.bodyA.node, contact.bodyB.node)
+        } else if aCategory | bCategory == PhysicsCategory.kyo | PhysicsCategory.mice {
+            kyoDie(contact.bodyA.node, contact.bodyB.node)
         }
+    }
+
+    func miceDie(_ nodeA: SKNode?, _ nodeB: SKNode?) {
+        if let mice = nodeA as? Mice {
+            mice.die()
+            nodeB?.removeFromParent()
+        } else if let mice = nodeB as? Mice {
+            nodeA?.removeFromParent()
+            mice.die()
+        }
+
+        bacgroundScene.ballCount += 1
+    }
+
+    func kyoDie(_ nodeA: SKNode?, _ nodeB: SKNode?) {
+        if let kyo = nodeA as? KYO, let mice = nodeB as? Mice {
+            mice.die()
+            kyo.die()
+        } else if let kyo = nodeB as? KYO, let mice = nodeA as? Mice {
+            mice.die()
+            kyo.die()
+        }
+
+        bacgroundScene.lifeCount -= 1
     }
 }
