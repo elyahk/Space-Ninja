@@ -12,6 +12,7 @@
 		6E156A6F29491F07007717D8 /* Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E156A6E29491F07007717D8 /* Shadow.swift */; };
 		6E156A7129491F1D007717D8 /* Mice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E156A7029491F1D007717D8 /* Mice.swift */; };
 		6E3576DB294B61D60095BCA4 /* String + Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3576DA294B61D60095BCA4 /* String + Images.swift */; };
+		6E3576DD294B75720095BCA4 /* BackgroundScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3576DC294B75710095BCA4 /* BackgroundScene.swift */; };
 		6E5838282949F1E700006851 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5838272949F1E700006851 /* GameScene.swift */; };
 		6E58382A2949F31900006851 /* PhysicsCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5838292949F31900006851 /* PhysicsCategory.swift */; };
 		6E58382C2949F41400006851 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E58382B2949F41400006851 /* Utils.swift */; };
@@ -74,6 +75,7 @@
 		6E156A6E29491F07007717D8 /* Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shadow.swift; sourceTree = "<group>"; };
 		6E156A7029491F1D007717D8 /* Mice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mice.swift; sourceTree = "<group>"; };
 		6E3576DA294B61D60095BCA4 /* String + Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Images.swift"; sourceTree = "<group>"; };
+		6E3576DC294B75710095BCA4 /* BackgroundScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundScene.swift; sourceTree = "<group>"; };
 		6E5838272949F1E700006851 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		6E5838292949F31900006851 /* PhysicsCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsCategory.swift; sourceTree = "<group>"; };
 		6E58382B2949F41400006851 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 				6E5838272949F1E700006851 /* GameScene.swift */,
 				6E583836294A298500006851 /* GameScene+Actions.swift */,
 				6E583832294A234B00006851 /* Console.swift */,
+				6E3576DC294B75710095BCA4 /* BackgroundScene.swift */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -450,6 +453,7 @@
 				6E156A6F29491F07007717D8 /* Shadow.swift in Sources */,
 				6E583835294A236300006851 /* Names.swift in Sources */,
 				6E156A7129491F1D007717D8 /* Mice.swift in Sources */,
+				6E3576DD294B75720095BCA4 /* BackgroundScene.swift in Sources */,
 				6E58382C2949F41400006851 /* Utils.swift in Sources */,
 				6E5838282949F1E700006851 /* GameScene.swift in Sources */,
 				6E3576DB294B61D60095BCA4 /* String + Images.swift in Sources */,
