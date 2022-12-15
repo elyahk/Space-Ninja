@@ -43,7 +43,7 @@ class GameScene: SKScene {
         let stage = SKSpriteNode(texture: SKTexture(imageNamed: "planet_02"))  // saturn
         stage.size = .init(width: 50, height: 50)
         stage.anchorPoint = .init(x: 0.5, y: 0.5)
-        stage.position = .init(x: 280 , y: height - 150 )
+        stage.position = .init(x: 240 , y: height - 190 )
         stage.zPosition = -2
 
         return stage
@@ -51,9 +51,9 @@ class GameScene: SKScene {
 
     lazy var planet2: SKSpriteNode = {
         let stage = SKSpriteNode(texture: SKTexture(imageNamed: "sun_1")) //sun
-        stage.size = .init(width: 120, height: 120)
+        stage.size = .init(width: 100, height: 100)
         stage.anchorPoint = .init(x: 0.5, y: 0.5)
-        stage.position = .init(x: width / 2, y: height / 2 )
+        stage.position = .init(x: width / 2, y: 250 )
         stage.zPosition = -2
 
         return stage
@@ -109,7 +109,7 @@ class GameScene: SKScene {
     
     lazy var planet7: SKSpriteNode = {
         let stage = SKSpriteNode(texture: SKTexture(imageNamed: "sun_1")) //sun piccolo
-        stage.size = .init(width: 70, height: 70)
+        stage.size = .init(width: 50, height: 50)
         stage.anchorPoint = .init(x: 0.5, y: 0.5)
         stage.position = .init(x: 500, y: height  - 150 )
         stage.zPosition = -2
