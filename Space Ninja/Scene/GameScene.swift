@@ -50,7 +50,7 @@ class GameScene: SKScene {
     }()
 
     lazy var planet2: SKSpriteNode = {
-        let stage = SKSpriteNode(texture: SKTexture(imageNamed: "planet_01"))
+        let stage = SKSpriteNode(texture: SKTexture(imageNamed: "planet_02"))
         stage.size = .init(width: 100, height: 100)
         stage.anchorPoint = .init(x: 0.5, y: 0.5)
         stage.position = .init(x: width / 2, y: height / 2 )
@@ -60,7 +60,7 @@ class GameScene: SKScene {
     }()
 
     lazy var planet3: SKSpriteNode = {
-        let stage = SKSpriteNode(texture: SKTexture(imageNamed: "planet_01"))
+        let stage = SKSpriteNode(texture: SKTexture(imageNamed: "planet_03"))
         stage.size = .init(width: 100, height: 100)
         stage.anchorPoint = .init(x: 0.5, y: 0.5)
         stage.position = .init(x: width / 2, y: height / 2 )
