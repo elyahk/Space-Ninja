@@ -32,7 +32,7 @@ class GameController {
     }
 
     func randomMeteor() {
-        let random = Int.random(in: 1000...4000)
+        let random = Int.random(in: 2000...4000)
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(random)) { [weak self] in
             self?.addMeteor()
             self?.randomMeteor()
@@ -40,7 +40,7 @@ class GameController {
     }
 
     func randomMice() {
-        let random = Int.random(in: 300...1000)
+        let random = Int.random(in: 800...3000)
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(random)) { [weak self] in
             self?.addMice()
             self?.randomMice()
@@ -126,6 +126,8 @@ extension GameScene: SKPhysicsContactDelegate {
             miceDie(contact.bodyA.node, contact.bodyB.node)
         } else if aCategory | bCategory == PhysicsCategory.kyo | PhysicsCategory.mice {
             kyoDie(contact.bodyA.node, contact.bodyB.node)
+        } else if aCategory | bCategory == PhysicsCategory.kyo | PhysicsCategory.meteor {
+            kyoDie(contact.bodyA.node, contact.bodyB.node)
         }
     }
 
@@ -142,11 +144,11 @@ extension GameScene: SKPhysicsContactDelegate {
     }
 
     func kyoDie(_ nodeA: SKNode?, _ nodeB: SKNode?) {
-        if let kyo = nodeA as? KYO, let mice = nodeB as? Mice {
-            mice.die()
+        if let kyo = nodeA as? KYO {
+            nodeB?.removeFromParent()
             kyo.die()
-        } else if let kyo = nodeB as? KYO, let mice = nodeA as? Mice {
-            mice.die()
+        } else if let kyo = nodeB as? KYO {
+            nodeA?.removeFromParent()
             kyo.die()
         }
 

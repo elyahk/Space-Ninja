@@ -9,6 +9,10 @@ import SwiftUI
 import SpriteKit
 
 struct MainGameScene: View {
+    @State var counter: Int = 0
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+
+
     var scene: GameScene {
         let scene = GameScene()
         scene.scaleMode = .resizeFill
@@ -24,7 +28,10 @@ struct MainGameScene: View {
             VStack { VStack {Text("TIME")
                     .foregroundColor(Color.white)
                     .padding(.leading, -10.0)
-                Text ("00")
+                Text("\(counter)")
+                    .onReceive(timer) { _ in
+                        counter += 1
+                    }
                     .foregroundColor(Color.white)
                 .padding(.leading, -10.0)}
                 Spacer()
