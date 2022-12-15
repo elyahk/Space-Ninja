@@ -108,6 +108,14 @@ class GameScene: SKScene {
             }
         }
     }
+
+    func addKYOIfPosible() {
+        if bacgroundScene.lifeCount > 0 {
+            kyo = KYO.addKYO(for: self)
+        } else {
+            // Game over
+        }
+    }
 }
 
 extension GameScene: SKPhysicsContactDelegate {
@@ -128,6 +136,16 @@ extension GameScene: SKPhysicsContactDelegate {
             kyoDie(contact.bodyA.node, contact.bodyB.node)
         } else if aCategory | bCategory == PhysicsCategory.kyo | PhysicsCategory.meteor {
             kyoDie(contact.bodyA.node, contact.bodyB.node)
+        } else if aCategory | bCategory == PhysicsCategory.meteor | PhysicsCategory.ground {
+            removeMeteor(contact.bodyA.node, contact.bodyB.node)
+        }
+    }
+
+    func removeMeteor(_ nodeA: SKNode?, _ nodeB: SKNode?) {
+        if PhysicsCategory.meteor == nodeA?.physicsBody?.categoryBitMask {
+            nodeA?.removeFromParent()
+        } else if PhysicsCategory.meteor == nodeB?.physicsBody?.categoryBitMask {
+            nodeB?.removeFromParent()
         }
     }
 
@@ -153,5 +171,6 @@ extension GameScene: SKPhysicsContactDelegate {
         }
 
         bacgroundScene.lifeCount -= 1
+        addKYOIfPosible()
     }
 }

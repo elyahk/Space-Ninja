@@ -29,6 +29,7 @@ class BackgroundScene {
         stage.physicsBody?.affectedByGravity = false
         stage.physicsBody?.isDynamic = false
         stage.physicsBody?.categoryBitMask = PhysicsCategory.ground
+        stage.physicsBody?.contactTestBitMask = PhysicsCategory.meteor
         stage.zPosition = -1
         stage.physicsBody?.friction = 0
 
