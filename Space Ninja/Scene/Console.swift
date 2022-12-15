@@ -70,6 +70,14 @@ class Console {
 
         return node
     }()
+}
 
-
+extension Console {
+    func configure(for scene: GameScene) {
+        scene.addChild(leftButton)
+        scene.addChild(rightButton)
+        scene.addChild(jumpButton)
+        scene.addChild(shootButton)
+        scene.addChild(attackButton)
+    }
 }

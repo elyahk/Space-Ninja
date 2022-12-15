@@ -16,7 +16,7 @@ enum MusicType {
 class KYO: SKSpriteNode {
     static var width: CGFloat { 50.0 }
 
-    static func makeKYO() -> KYO {
+    static func addKYO(for scene: GameScene) -> KYO {
         let kyo = KYO(texture: SKTexture(imageNamed: "kyo_attack_1"))
         kyo.size = CGSize(width: width, height: width)
         kyo.physicsBody = SKPhysicsBody(rectangleOf: kyo.size)
@@ -28,6 +28,7 @@ class KYO: SKSpriteNode {
         kyo.physicsBody?.categoryBitMask = PhysicsCategory.kyo
         kyo.physicsBody?.collisionBitMask = PhysicsCategory.ground
         kyo.physicsBody?.friction = 0
+        scene.addChild(kyo)
 
         return kyo
     }
@@ -85,6 +86,12 @@ class KYO: SKSpriteNode {
 
     func shoot() {
         makeAction(type: .shoot)
+    }
+}
+
+extension KYO {
+    func addCharacter(for scene: GameScene) {
+        scene.addChild(self)
     }
 }
 

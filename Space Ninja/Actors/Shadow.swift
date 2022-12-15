@@ -49,7 +49,7 @@ class Shadow: SKSpriteNode {
         run(SKAction.repeatForever(action))
     }
 
-    static func makeShadow() -> Shadow {
+    static func addShadow(for scene: GameScene) -> Shadow {
         let shadow = Shadow(texture: SKTexture(imageNamed: "shadow_stand_1"))
         shadow.size = CGSize(width: 60, height: 60)
         shadow.physicsBody = SKPhysicsBody(rectangleOf: shadow.size)
@@ -62,6 +62,7 @@ class Shadow: SKSpriteNode {
         shadow.physicsBody?.collisionBitMask = PhysicsCategory.ground
         shadow.name = Names.shadow
         shadow.physicsBody?.friction = 0
+        scene.addChild(shadow)
 
         return shadow
     }
