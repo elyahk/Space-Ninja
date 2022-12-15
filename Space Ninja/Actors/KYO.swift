@@ -29,7 +29,7 @@ class KYO: SKSpriteNode {
         kyo.physicsBody?.isDynamic = true
         kyo.physicsBody?.affectedByGravity = true
         kyo.anchorPoint = .init(x: 0.5, y: 0.5)
-        kyo.position = CGPoint(x: 25, y: 200)
+        kyo.position = CGPoint(x: 50, y: 200)
         kyo.physicsBody?.categoryBitMask = PhysicsCategory.kyo
         kyo.physicsBody?.collisionBitMask = PhysicsCategory.ground
         kyo.physicsBody?.contactTestBitMask = PhysicsCategory.mice

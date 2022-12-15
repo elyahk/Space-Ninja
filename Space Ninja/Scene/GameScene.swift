@@ -11,6 +11,12 @@ import SpriteKit
 
 class GameController {
     let scene: GameScene
+    var meteorHighSpeed: Int = 4000
+    var meteorLowSpeed: Int = 2000
+    var miceHighSpeed: Int = 3000
+    var miceLowSpeed: Int = 800
+    var miceCount: Int = 1
+    var meteorCount: Int = 1
 
     init(scene: GameScene) {
         self.scene = scene
@@ -20,30 +26,50 @@ class GameController {
 
     func addMice() {
         guard let randomType = EnemyType.allCases.randomElement() else { return }
+        for _ in 0..<miceCount {
 
-        _ = Mice.addMice(type: randomType, for: scene)
+            _ = Mice.addMice(type: randomType, for: scene)
+
+            if miceLowSpeed > 20, miceHighSpeed > 30 {
+                miceLowSpeed -= 50
+                miceHighSpeed -= 50
+            } else {
+                miceCount = miceCount < 3 ? miceCount + 1 : 3
+            }
+        }
     }
 
     func addMeteor() {
         guard let randomType = MeteorType.allCases.randomElement() else { return }
-
-        let random = CGFloat.random(in: 100...(width - 50))
-        _ = Meteor.addMeteor(type: randomType, for: scene, position: .init(x: random, y: height - 50))
+        for _ in 0..<meteorCount {
+            let random = CGFloat.random(in: 100...(width - 50))
+            _ = Meteor.addMeteor(type: randomType, for: scene, position: .init(x: random, y: height - 50))
+            if meteorLowSpeed > 40, meteorHighSpeed > 50 {
+                meteorLowSpeed -= 80
+                meteorHighSpeed -= 80
+            } else {
+                meteorCount = meteorCount < 3 ? meteorCount + 1 : 3
+            }
+        }
     }
 
     func randomMeteor() {
-        let random = Int.random(in: 2000...4000)
-        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(random)) { [weak self] in
-            self?.addMeteor()
-            self?.randomMeteor()
+        if meteorHighSpeed > meteorLowSpeed {
+            let random = Int.random(in: meteorLowSpeed...meteorHighSpeed)
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(random)) { [weak self] in
+                self?.addMeteor()
+                self?.randomMeteor()
+            }
         }
     }
 
     func randomMice() {
-        let random = Int.random(in: 800...3000)
-        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(random)) { [weak self] in
-            self?.addMice()
-            self?.randomMice()
+        if miceHighSpeed > miceLowSpeed {
+            let random = Int.random(in: miceLowSpeed...miceHighSpeed)
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(random)) { [weak self] in
+                self?.addMice()
+                self?.randomMice()
+            }
         }
     }
 }
