@@ -70,7 +70,8 @@ class KYO: SKSpriteNode {
 
     func stop() {
         physicsBody?.velocity = CGVector(dx: 0, dy: 0)
-        makeAction(type: .stand)
+        removeAllActions()
+        texture = SKTexture(imageNamed: "kyo_attack_1")
     }
 
     func jump() {

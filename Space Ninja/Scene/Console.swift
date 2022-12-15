@@ -12,7 +12,7 @@ class Console {
     let bHeight = 40
 
     lazy var leftButton: SKSpriteNode = {
-        let node = SKSpriteNode(texture: SKTexture(imageNamed: .leftRunImage))
+        let node = SKSpriteNode(texture: SKTexture(imageNamed: .rightRunImage))
         node.size = .init(width: bHeight * 1, height: bHeight)
         node.name = Names.leftButton
         node.position = .init(x: emptySpace + bHeight, y: bHeight)
@@ -24,10 +24,10 @@ class Console {
     }()
 
     lazy var rightButton: SKSpriteNode = {
-        let node = SKSpriteNode(texture: SKTexture(imageNamed: .rightRunImage))
+        let node = SKSpriteNode(texture: SKTexture(imageNamed: .leftRunImage))
         node.size = .init(width: bHeight * 1, height: bHeight)
         node.name = Names.rightButton
-        node.position = .init(x: emptySpace + bHeight * 1 + 10, y: bHeight)
+        node.position = .init(x: emptySpace + bHeight * 2 + 10, y: bHeight)
         node.physicsBody?.affectedByGravity = false
         node.physicsBody?.isDynamic = false
         node.zPosition = -1
