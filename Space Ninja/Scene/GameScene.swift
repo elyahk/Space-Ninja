@@ -108,12 +108,20 @@ extension GameScene: SKPhysicsContactDelegate {
             contact.bodyA.node?.removeFromParent()
         } else if aName == Names.shadow && bName == Names.shuriken {
             contact.bodyB.node?.removeFromParent()
-        } else if aName == Names.shuriken && bName == Names.mice {
-            contact.bodyA.node?.removeFromParent()
-            contact.bodyB.node?.removeFromParent()
-        } else if aName == Names.mice && bName == Names.shuriken {
-            contact.bodyB.node?.removeFromParent()
-            contact.bodyA.node?.removeFromParent()
+        } else if aName == Names.shuriken && bName == Names.mice || aName == Names.mice && bName == Names.shuriken {
+            miceDie(contact.bodyA.node, contact.bodyB.node)
         }
+    }
+
+    func miceDie(_ nodeA: SKNode?, _ nodeB: SKNode?) {
+        if let mice = nodeA as? Mice {
+            mice.die()
+            nodeB?.removeFromParent()
+        } else if let mice = nodeB as? Mice {
+            nodeA?.removeFromParent()
+            mice.die()
+        }
+
+        bacgroundScene.ballCount += 1
     }
 }

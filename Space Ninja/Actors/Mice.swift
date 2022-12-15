@@ -16,13 +16,22 @@ class Mice: SKSpriteNode {
         self.type = type
     }
 
-    func makeAction(type action: EnemyAction) {
+    func makeAction(type action: EnemyAction, repeated: Bool = true, timePerFrame: TimeInterval = 0.1, completion: @escaping () -> Void = { }) {
         let actionTextures: [SKTexture] = type.actionNames(action: action).map {
             SKTexture(imageNamed: $0)
         }
 
-        let action = SKAction.animate(with: actionTextures, timePerFrame: 0.1, resize: true, restore: true)
-        run(SKAction.repeatForever(action))
+        let action = SKAction.animate(with: actionTextures, timePerFrame: timePerFrame, resize: false, restore: true)
+        let finalAction = repeated ? SKAction.repeatForever(action) : action
+        run(finalAction) {
+            completion()
+        }
+    }
+
+    func die() {
+        makeAction(type: .die, repeated: false, timePerFrame: 0.05) { [weak self] in
+            self?.removeFromParent()
+        }
     }
 }
 
