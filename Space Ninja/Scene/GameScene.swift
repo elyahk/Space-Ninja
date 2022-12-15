@@ -10,8 +10,19 @@ import SpriteKit
 
 
 class GameController {
-    func makeEnemy(type: EnemyType, for scene: GameScene) -> Mice {
+    let scene: GameScene
+
+    init(scene: GameScene) {
+        self.scene = scene
+    }
+
+    func makeEnemy(type: EnemyType) -> Mice {
         return Mice.addMice(type: type, for: scene)
+    }
+
+    func addMeteor() {
+        let random = CGFloat.random(in: 100...(width - 50))
+        _ = Meteor.addMeteor(type: .rock, for: scene, position: .init(x: random, y: height - 50))
     }
 }
 
@@ -21,7 +32,7 @@ class GameScene: SKScene {
     var console: Console = .init()
     var bacgroundScene: BackgroundScene = .init()
     var shurikens: [SKSpriteNode] = []
-    var gameController = GameController()
+    lazy var gameController = { GameController(scene: self) }()
     lazy var shadow: Shadow = { Shadow.addShadow(for: self) }()
     lazy var kyo: KYO = { KYO.addKYO(for: self) }()
 
@@ -63,7 +74,9 @@ class GameScene: SKScene {
             }
         }
 
-        let mice = gameController.makeEnemy(type: .red, for: self)
+        let mice = gameController.makeEnemy(type: .red)
+        gameController.addMeteor()
+
         mices.append(mice)
     }
 
