@@ -40,18 +40,18 @@ class GameScene: SKScene {
     }()
 
     lazy var planet1: SKSpriteNode = {
-        let stage = SKSpriteNode(texture: SKTexture(imageNamed: "planet_01"))
-        stage.size = .init(width: 100, height: 100)
+        let stage = SKSpriteNode(texture: SKTexture(imageNamed: "planet_02"))  // saturn
+        stage.size = .init(width: 50, height: 50)
         stage.anchorPoint = .init(x: 0.5, y: 0.5)
-        stage.position = .init(x: width / 2, y: height / 2 )
+        stage.position = .init(x: 280 , y: height - 150 )
         stage.zPosition = -2
 
         return stage
     }()
 
     lazy var planet2: SKSpriteNode = {
-        let stage = SKSpriteNode(texture: SKTexture(imageNamed: "planet_02"))
-        stage.size = .init(width: 100, height: 100)
+        let stage = SKSpriteNode(texture: SKTexture(imageNamed: "sun_1")) //sun
+        stage.size = .init(width: 120, height: 120)
         stage.anchorPoint = .init(x: 0.5, y: 0.5)
         stage.position = .init(x: width / 2, y: height / 2 )
         stage.zPosition = -2
@@ -60,24 +60,88 @@ class GameScene: SKScene {
     }()
 
     lazy var planet3: SKSpriteNode = {
-        let stage = SKSpriteNode(texture: SKTexture(imageNamed: "planet_03"))
-        stage.size = .init(width: 100, height: 100)
+        let stage = SKSpriteNode(texture: SKTexture(imageNamed: "planet_01"))
+        stage.size = .init(width: 30, height: 30)
         stage.anchorPoint = .init(x: 0.5, y: 0.5)
-        stage.position = .init(x: width / 2, y: height / 2 )
+        stage.position = .init(x: 800, y: height - 100)
         stage.zPosition = -2
 
         return stage
     }()
+    
+    
+    
+    
 
     lazy var planet4: SKSpriteNode = {
-        let stage = SKSpriteNode(texture: SKTexture(imageNamed: "planet_01"))
-        stage.size = .init(width: 100, height: 100)
+        let stage = SKSpriteNode(texture: SKTexture(imageNamed: "woll_ball_01")) //wool
+        stage.size = .init(width: 60, height: 60)
         stage.anchorPoint = .init(x: 0.5, y: 0.5)
-        stage.position = .init(x: width / 2, y: height / 2 )
+        stage.position = .init(x: 700 , y: height-120 )
         stage.zPosition = -2
 
         return stage
     }()
+    
+    
+    
+    lazy var planet5: SKSpriteNode = {
+        let stage = SKSpriteNode(texture: SKTexture(imageNamed: "woll_ball_01")) //wool
+        stage.size = .init(width: 60, height: 60)
+        stage.anchorPoint = .init(x: 0.5, y: 0.5)
+        stage.position = .init(x: 700 , y: height-120 )
+        stage.zPosition = -2
+
+        return stage
+    }()
+    
+    
+    lazy var planet6: SKSpriteNode = {
+        let stage = SKSpriteNode(texture: SKTexture(imageNamed: "woll_ball_01")) //wool
+        stage.size = .init(width: 60, height: 60)
+        stage.anchorPoint = .init(x: 0.5, y: 0.5)
+        stage.position = .init(x: 700 , y: height-120 )
+        stage.zPosition = -2
+
+        return stage
+    }()
+    
+    
+    lazy var planet7: SKSpriteNode = {
+        let stage = SKSpriteNode(texture: SKTexture(imageNamed: "sun_1")) //sun piccolo
+        stage.size = .init(width: 70, height: 70)
+        stage.anchorPoint = .init(x: 0.5, y: 0.5)
+        stage.position = .init(x: 500, y: height  - 150 )
+        stage.zPosition = -2
+
+        return stage
+    
+    }()
+    
+    lazy var planet8: SKSpriteNode = {
+        let stage = SKSpriteNode(texture: SKTexture(imageNamed: "planet_01"))
+        stage.size = .init(width: 40, height: 40)
+        stage.anchorPoint = .init(x: 0.5, y: 0.5)
+        stage.position = .init(x: 820, y: height - 80)
+        stage.zPosition = -2
+
+        return stage
+    }()
+    
+    lazy var planet9: SKSpriteNode = {
+        let stage = SKSpriteNode(texture: SKTexture(imageNamed: "planet_01"))
+        stage.size = .init(width: 30, height: 30)
+        stage.anchorPoint = .init(x: 0.5, y: 0.5)
+        stage.position = .init(x: 850, y: height - 120)
+        stage.zPosition = -2
+
+        return stage
+    }()
+    
+    
+    
+    
+    
 
     lazy var shadow: Shadow = {
         let shadow = Shadow.makeShadow()
@@ -102,6 +166,11 @@ class GameScene: SKScene {
         addChild(planet2)
         addChild(planet3)
         addChild(planet4)
+        addChild(planet5)
+        addChild(planet6)
+        addChild(planet7)
+        addChild(planet8)
+        addChild(planet9)
         addChild(stage)
         addChild(kyo)
         addChild(shadow)
