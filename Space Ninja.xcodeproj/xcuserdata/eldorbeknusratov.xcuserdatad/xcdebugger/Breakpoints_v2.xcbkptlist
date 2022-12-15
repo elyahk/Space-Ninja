@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "4338C0B5-87B7-45C7-AA39-2026D104F0DB"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B1580BC8-2DD7-419D-8F3F-0685B17FD030"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Space Ninja/GameScene.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
+            landmarkName = "didBegin(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B1580BC8-2DD7-419D-8F3F-0685B17FD030 - bb05f5357304a6d1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Space_Ninja.GameScene.didBegin(__C.SKPhysicsContact) -&gt; ()"
+                  moduleName = "Space Ninja"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eldorbeknusratov/Desktop/Space-Ninja/Space%20Ninja/GameScene.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "167"
+                  endingLineNumber = "167"
+                  offsetFromSymbolStart = "97">
+               </Location>
+               <Location
+                  uuid = "B1580BC8-2DD7-419D-8F3F-0685B17FD030 - bb05f5357304a6d1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Space_Ninja.GameScene.didBegin(__C.SKPhysicsContact) -&gt; ()"
+                  moduleName = "Space Ninja"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eldorbeknusratov/Desktop/Space-Ninja/Space%20Ninja/GameScene.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "167"
+                  endingLineNumber = "167"
+                  offsetFromSymbolStart = "273">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

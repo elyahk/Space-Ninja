@@ -6,9 +6,13 @@
 //
 
 import SwiftUI
+import AVFoundation
+
 
 struct MainScreen: View {
     @State var playGame: Bool = false
+    
+    @State var audioPlayer: AVAudioPlayer!
 
     var body: some View {
         ZStack {
@@ -45,6 +49,11 @@ struct MainScreen: View {
         .fullScreenCover(isPresented: $playGame, content: {
             MainGameScene()
         })
+        .onAppear {
+            let sound = Bundle.main.path(forResource: "background_music", ofType: "mp3")
+            self.audioPlayer = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound!))
+        }
+        
     }
 }
 

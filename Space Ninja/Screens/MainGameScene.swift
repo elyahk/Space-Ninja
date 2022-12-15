@@ -7,11 +7,13 @@
 
 import SwiftUI
 import SpriteKit
+import AVFoundation
 
 struct MainGameScene: View {
     @State var counter: Int = 0
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
+    @State var audioPlayer: AVAudioPlayer!
 
     var scene: GameScene {
         let scene = GameScene()
@@ -37,6 +39,11 @@ struct MainGameScene: View {
                 Spacer()
             }
          }
+        .onAppear {
+            let sound = Bundle.main.path(forResource: "background_music", ofType: "mp3")
+            self.audioPlayer = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound!))
+            self.audioPlayer.play()
+        }
     }
 }
 
