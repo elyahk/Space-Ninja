@@ -8,10 +8,38 @@
 import Foundation
 import SpriteKit
 
+
+class GameController {
+    func makeEnemy(type: EnemyType, for scene: GameScene) -> Mice {
+        let mice = Mice(imageNamed: "")
+        mice.size = CGSize(width: 45, height: 45)
+        mice.physicsBody = SKPhysicsBody(rectangleOf: mice.size)
+        mice.physicsBody?.allowsRotation = false
+        mice.physicsBody?.isDynamic = true
+        mice.physicsBody?.affectedByGravity = true
+        mice.anchorPoint = .init(x: 0.5, y: 0.5)
+        mice.position = CGPoint(x: width - 100, y: 200)
+        mice.physicsBody?.categoryBitMask = PhysicsCategory.mice
+        mice.physicsBody?.collisionBitMask = PhysicsCategory.ground
+        mice.physicsBody?.categoryBitMask = PhysicsCategory.kyo
+        mice.name = Names.mice
+        mice.physicsBody?.friction = 0
+        mice.physicsBody?.velocity = CGVector(dx: -400, dy: 0)
+        mice.makeAction(type: .run)
+
+        scene.addChild(mice)
+
+        return mice
+    }
+}
+
+
 class GameScene: SKScene {
+    var mices: [Mice] = []
     var console: Console = .init()
     var bacgroundScene: BackgroundScene = .init()
     var shurikens: [SKSpriteNode] = []
+    var gameController = GameController()
     lazy var shadow: Shadow = { Shadow.addShadow(for: self) }()
     lazy var kyo: KYO = { KYO.addKYO(for: self) }()
 
@@ -54,6 +82,9 @@ class GameScene: SKScene {
 
             }
         }
+
+        let mice = gameController.makeEnemy(type: .red, for: self)
+        mices.append(mice)
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {

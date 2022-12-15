@@ -16,4 +16,5 @@ struct Names {
     static let shuriken = "shuriken"
     static let kyo = "kyo"
     static let shadow = "shadow"
+    static let mice = "mice"
 }

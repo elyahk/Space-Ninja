@@ -58,7 +58,7 @@ class KYO: SKSpriteNode {
             actions.insert(music, at: 0)
         case .attack:
             let music = SKAction.playSoundFileNamed(Music.katana_attack, waitForCompletion: true)
-            actions.insert(music, at: 0)
+            actions.append(music)
         }
 
         let finalAction = SKAction.sequence(actions)
