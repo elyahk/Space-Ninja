@@ -16,6 +16,18 @@ class GameScene: SKScene {
     var shurikens: [SKSpriteNode] = []
     var console: Console = .init()
 
+    var lifeCount: Int = 3 {
+        didSet {
+            lifeText.text = "\(lifeCount)"
+        }
+    }
+
+    var ballCount: Int = 0 {
+        didSet {
+            ballText.text = "\(ballCount)"
+        }
+    }
+
     lazy var stage: SKSpriteNode = {
         let stage = SKSpriteNode(texture: SKTexture(imageNamed: "ground_01"), size: .init(width: width, height: 80))
         stage.anchorPoint = .init(x: 0.5, y: 0.5)
@@ -43,7 +55,7 @@ class GameScene: SKScene {
         let stage = SKSpriteNode(texture: SKTexture(imageNamed: .lifeIcon))
         stage.size = .init(width: 30, height: 30)
         stage.anchorPoint = .init(x: 0.5, y: 0.5)
-        stage.position = .init(x: 35, y: height - 45 )
+        stage.position = .init(x: 35, y: height - 30)
         stage.zPosition = -2
 
         return stage
@@ -52,7 +64,7 @@ class GameScene: SKScene {
     lazy var lifeText: SKLabelNode = {
         var view = SKLabelNode()
         view = SKLabelNode(fontNamed: "AvenirNext-Bold")
-        view.text = "0"
+        view.text = "\(lifeCount)"
         view.horizontalAlignmentMode = .left
         view.fontSize = 35
         view.position = .init(x: lifeIcon.position.x + lifeIcon.size.width / 2 + 10, y: lifeIcon.position.y - 10)
@@ -64,7 +76,7 @@ class GameScene: SKScene {
         let stage = SKSpriteNode(texture: SKTexture(imageNamed: .woolBallIcon))
         stage.size = .init(width: 30, height: 30)
         stage.anchorPoint = .init(x: 0.5, y: 0.5)
-        stage.position = .init(x: 140, y: height - 45 )
+        stage.position = .init(x: 125, y: height - 30)
         stage.zPosition = -2
 
         return stage
@@ -73,7 +85,7 @@ class GameScene: SKScene {
     lazy var ballText: SKLabelNode = {
         var view = SKLabelNode()
         view = SKLabelNode(fontNamed: "AvenirNext-Bold")
-        view.text = "0"
+        view.text = "\(ballCount)"
         view.horizontalAlignmentMode = .left
         view.fontSize = 35
         view.position = .init(x: ballIcon.position.x + ballIcon.size.width / 2 + 10, y: ballIcon.position.y - 10)
