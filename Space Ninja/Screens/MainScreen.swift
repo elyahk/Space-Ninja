@@ -6,8 +6,13 @@
 //
 
 import SwiftUI
+import AVFoundation
+
 
 struct MainScreen: View {
+    
+    @State var audioPlayer: AVAudioPlayer!
+
     var body: some View {
         ZStack {
             Image("fbg1")
@@ -40,6 +45,10 @@ struct MainScreen: View {
             }
             .frame(width: 300, height: 150)
             .position(x: width/2 + 10, y: height/2 + 145)
+        }
+        .onAppear {
+            let sound = Bundle.main.path(forResource: "background_music", ofType: "mp3")
+            self.audioPlayer = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound!))
         }
         
     }
