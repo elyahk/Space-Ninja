@@ -27,7 +27,7 @@ class Console {
         let node = SKSpriteNode(texture: SKTexture(imageNamed: .rightRunImage))
         node.size = .init(width: bHeight * 1, height: bHeight)
         node.name = Names.rightButton
-        node.position = .init(x: emptySpace + bHeight * 1 + 10, y: bHeight)
+        node.position = .init(x: emptySpace + bHeight * 3 + 10, y: bHeight)
         node.physicsBody?.affectedByGravity = false
         node.physicsBody?.isDynamic = false
         node.zPosition = -1
