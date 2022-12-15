@@ -11,7 +11,7 @@ import SwiftUI
 struct Space_NinjaApp: App {
     var body: some Scene {
         WindowGroup {
-            MainGameScene()
+            MainScreen()
         }
     }
 }

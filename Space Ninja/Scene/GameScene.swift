@@ -50,6 +50,7 @@ class GameController {
 
 
 class GameScene: SKScene {
+    var gameOver: () -> Void = { }
     var mices: [Mice] = []
     var console: Console = .init()
     var bacgroundScene: BackgroundScene = .init()
@@ -113,7 +114,7 @@ class GameScene: SKScene {
         if bacgroundScene.lifeCount > 0 {
             kyo = KYO.addKYO(for: self)
         } else {
-            // Game over
+            gameOver()
         }
     }
 }

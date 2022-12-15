@@ -13,6 +13,7 @@
 		6E156A6F29491F07007717D8 /* Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E156A6E29491F07007717D8 /* Shadow.swift */; };
 		6E156A7129491F1D007717D8 /* Mice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E156A7029491F1D007717D8 /* Mice.swift */; };
 		6E32B7A0294BC7EB00741C07 /* Meteor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E32B79F294BC7EB00741C07 /* Meteor.swift */; };
+		6E32B7A2294BDA7D00741C07 /* main_background_music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6E32B7A1294BDA7D00741C07 /* main_background_music.mp3 */; };
 		6E3576DB294B61D60095BCA4 /* String + Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3576DA294B61D60095BCA4 /* String + Images.swift */; };
 		6E3576DD294B75720095BCA4 /* BackgroundScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3576DC294B75710095BCA4 /* BackgroundScene.swift */; };
 		6E5838282949F1E700006851 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5838272949F1E700006851 /* GameScene.swift */; };
@@ -78,6 +79,7 @@
 		6E156A6E29491F07007717D8 /* Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shadow.swift; sourceTree = "<group>"; };
 		6E156A7029491F1D007717D8 /* Mice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mice.swift; sourceTree = "<group>"; };
 		6E32B79F294BC7EB00741C07 /* Meteor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meteor.swift; sourceTree = "<group>"; };
+		6E32B7A1294BDA7D00741C07 /* main_background_music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = main_background_music.mp3; path = "Space Ninja/Assets.xcassets/SpaceCatsTheme.dataset/main_background_music.mp3"; sourceTree = SOURCE_ROOT; };
 		6E3576DA294B61D60095BCA4 /* String + Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Images.swift"; sourceTree = "<group>"; };
 		6E3576DC294B75710095BCA4 /* BackgroundScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundScene.swift; sourceTree = "<group>"; };
 		6E5838272949F1E700006851 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 		6E3576DE294B7E970095BCA4 /* music */ = {
 			isa = PBXGroup;
 			children = (
+				6E32B7A1294BDA7D00741C07 /* main_background_music.mp3 */,
 				6E58383D294A2F5E00006851 /* background_music.mp3 */,
 			);
 			path = music;
@@ -428,6 +431,7 @@
 				6E583865294A322900006851 /* soundeffect_shadow_die.wav in Resources */,
 				6E583854294A2F5F00006851 /* soundeffect_ shadow die.mp3 in Resources */,
 				6E583866294A322900006851 /* soundeffect_collect.wav in Resources */,
+				6E32B7A2294BDA7D00741C07 /* main_background_music.mp3 in Resources */,
 				6E58384D294A2F5F00006851 /* soundeffect_ meteorite attack.mp3 in Resources */,
 				6E583852294A2F5F00006851 /* soundeffect_ shuriken.mp3 in Resources */,
 				6E58384E294A2F5F00006851 /* soundeffect_ jump.mp3 in Resources */,

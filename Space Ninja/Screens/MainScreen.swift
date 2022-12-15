@@ -11,7 +11,6 @@ import AVFoundation
 
 struct MainScreen: View {
     @State var playGame: Bool = false
-    
     @State var audioPlayer: AVAudioPlayer!
 
     var body: some View {
@@ -36,6 +35,7 @@ struct MainScreen: View {
            
             Button(action: {
                 playGame.toggle()
+                audioPlayer.stop()
             }) {
                 Image("sbf")
                     .resizable()
@@ -50,8 +50,9 @@ struct MainScreen: View {
             MainGameScene()
         })
         .onAppear {
-            let sound = Bundle.main.path(forResource: "background_music", ofType: "mp3")
+            let sound = Bundle.main.path(forResource: "main_background_music", ofType: "mp3")
             self.audioPlayer = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound!))
+            self.audioPlayer.play()
         }
         
     }

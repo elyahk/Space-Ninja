@@ -10,17 +10,18 @@ import SpriteKit
 import AVFoundation
 
 struct MainGameScene: View {
+    @Environment(\.dismiss) var dismiss
     @State var counter: Int = 0
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-
     @State var audioPlayer: AVAudioPlayer!
 
-    var scene: GameScene {
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+
+    var scene: GameScene = {
         let scene = GameScene()
         scene.scaleMode = .resizeFill
 
         return scene
-    }
+    }()
 
     var body: some View {
         ZStack {
@@ -43,6 +44,10 @@ struct MainGameScene: View {
             let sound = Bundle.main.path(forResource: "background_music", ofType: "mp3")
             self.audioPlayer = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound!))
             self.audioPlayer.play()
+            scene.gameOver = { 
+                dismiss()
+                self.audioPlayer.stop()
+            }
         }
     }
 }

@@ -14,7 +14,7 @@ struct Music {
     static let jump = "soundeffect_jump.wav"
     static let mouse_die = "soundeffect_mouse_die.wav"
     static let katana_attack = "soundeffect_katana_attack.wav"
-    static let shuriken = "soundeffect_ shuriken.wav"
+    static let shuriken = "soundeffect_shuriken.wav"
     static let shadow_die = "soundeffect_ shadow_die.wav"
     static let collect = "soundeffect_ collect.wav"
     static let meteorite_attack = "soundeffect_ meteorite_attack.wav"
