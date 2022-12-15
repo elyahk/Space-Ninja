@@ -60,7 +60,7 @@ class Mice: SKSpriteNode {
 
 // MARK: - Type
 
-enum EnemyType: String {
+enum EnemyType: String, CaseIterable {
     case blue
     case green
     case orange

@@ -39,7 +39,7 @@ class Meteor: SKSpriteNode {
 
 // MARK: - Type
 
-enum MeteorType: String {
+enum MeteorType: String, CaseIterable {
     case rock = "rock_29"
     case rock2 = "rock_31"
     case explosion = "meteora_up_explode_03"

@@ -14,15 +14,37 @@ class GameController {
 
     init(scene: GameScene) {
         self.scene = scene
+        randomMice()
+        randomMeteor()
     }
 
-    func makeEnemy(type: EnemyType) -> Mice {
-        return Mice.addMice(type: type, for: scene)
+    func addMice() {
+        guard let randomType = EnemyType.allCases.randomElement() else { return }
+
+        _ = Mice.addMice(type: randomType, for: scene)
     }
 
     func addMeteor() {
+        guard let randomType = MeteorType.allCases.randomElement() else { return }
+
         let random = CGFloat.random(in: 100...(width - 50))
-        _ = Meteor.addMeteor(type: .rock, for: scene, position: .init(x: random, y: height - 50))
+        _ = Meteor.addMeteor(type: randomType, for: scene, position: .init(x: random, y: height - 50))
+    }
+
+    func randomMeteor() {
+        let random = Int.random(in: 1000...4000)
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(random)) { [weak self] in
+            self?.addMeteor()
+            self?.randomMeteor()
+        }
+    }
+
+    func randomMice() {
+        let random = Int.random(in: 300...1000)
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(random)) { [weak self] in
+            self?.addMice()
+            self?.randomMice()
+        }
     }
 }
 
@@ -56,6 +78,7 @@ class GameScene: SKScene {
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
+            _ = gameController
             let location = touch.location(in: self)
             let touchedNode = atPoint(location)
 
@@ -73,11 +96,6 @@ class GameScene: SKScene {
                 attack()
             }
         }
-
-        let mice = gameController.makeEnemy(type: .red)
-        gameController.addMeteor()
-
-        mices.append(mice)
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
