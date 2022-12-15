@@ -197,3 +197,15 @@ class BackgroundScene {
         planet9
     ]
 }
+
+extension BackgroundScene {
+    func configure(for scene: GameScene) {
+        scene.addChild(stage)
+        scene.addChild(background)
+        scene.addChild(lifeIcon)
+        scene.addChild(lifeText)
+        scene.addChild(ballIcon)
+        scene.addChild(ballText)
+        planets.forEach { scene.addChild($0) }
+    }
+}

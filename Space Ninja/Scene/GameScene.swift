@@ -9,34 +9,9 @@ import Foundation
 import SpriteKit
 
 class GameScene: SKScene {
-    let stageCategory: UInt32 = 0x1 << 1
-    let enemyCategory: UInt32 = 0x1 << 2
-    let kyoCategory: UInt32 = 0x1 << 3
-    let shadowCategory: UInt32 = 0x1 << 4
-    var shurikens: [SKSpriteNode] = []
     var console: Console = .init()
     var bacgroundScene: BackgroundScene = .init()
-
-    var lifeCount: Int = 3 {
-        didSet {
-            lifeText.text = "\(lifeCount)"
-        }
-    }
-
-    var ballCount: Int = 0 {
-        didSet {
-            ballText.text = "\(ballCount)"
-        }
-    }
-
-    lazy var stage: SKSpriteNode = bacgroundScene.stage
-    lazy var background: SKSpriteNode = bacgroundScene.background
-    lazy var lifeIcon: SKSpriteNode = bacgroundScene.lifeIcon
-    lazy var lifeText: SKLabelNode = bacgroundScene.lifeText
-    lazy var ballIcon: SKSpriteNode = bacgroundScene.ballIcon
-    lazy var ballText: SKLabelNode = bacgroundScene.ballText
-    lazy var planets: [SKSpriteNode] = bacgroundScene.planets
-    lazy var planet1: SKSpriteNode = bacgroundScene.planet1
+    var shurikens: [SKSpriteNode] = []
     lazy var shadow: Shadow = {
         let shadow = Shadow.makeShadow()
 
@@ -53,7 +28,7 @@ class GameScene: SKScene {
 
     private func configure() {
         configurePhysics()
-        configureBackgroundScene()
+        bacgroundScene.configure(for: self)
         configureCharacters()
         configureConsole()
     }
@@ -75,16 +50,6 @@ class GameScene: SKScene {
         physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
         physicsWorld.gravity = CGVector(dx: 0.0, dy: -3.0)
         physicsWorld.contactDelegate = self
-    }
-
-    private func configureBackgroundScene() {
-        addChild(stage)
-        addChild(background)
-        addChild(lifeIcon)
-        addChild(lifeText)
-        addChild(ballIcon)
-        addChild(ballText)
-        planets.forEach { addChild($0) }
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
