@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4D8BA4E8294A2A5000E9FDFF /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8BA4E7294A2A5000E9FDFF /* MainScreen.swift */; };
+		6E10C09C294B778C0052E8BD /* LeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E10C09B294B778C0052E8BD /* LeaderView.swift */; };
 		6E156A6D29491EE9007717D8 /* KYO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E156A6C29491EE9007717D8 /* KYO.swift */; };
 		6E156A6F29491F07007717D8 /* Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E156A6E29491F07007717D8 /* Shadow.swift */; };
 		6E156A7129491F1D007717D8 /* Mice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E156A7029491F1D007717D8 /* Mice.swift */; };
@@ -71,6 +72,7 @@
 
 /* Begin PBXFileReference section */
 		4D8BA4E7294A2A5000E9FDFF /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
+		6E10C09B294B778C0052E8BD /* LeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderView.swift; sourceTree = "<group>"; };
 		6E156A6C29491EE9007717D8 /* KYO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KYO.swift; sourceTree = "<group>"; };
 		6E156A6E29491F07007717D8 /* Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shadow.swift; sourceTree = "<group>"; };
 		6E156A7029491F1D007717D8 /* Mice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mice.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 			children = (
 				6E6B311229477845001C9D48 /* MainGameScene.swift */,
 				4D8BA4E7294A2A5000E9FDFF /* MainScreen.swift */,
+				6E10C09B294B778C0052E8BD /* LeaderView.swift */,
 				6E7F0F5F2948CBE00039CFB4 /* PlayView.swift */,
 			);
 			path = Screens;
@@ -459,6 +462,7 @@
 				6E3576DB294B61D60095BCA4 /* String + Images.swift in Sources */,
 				4D8BA4E8294A2A5000E9FDFF /* MainScreen.swift in Sources */,
 				6E7F0F602948CBE00039CFB4 /* PlayView.swift in Sources */,
+				6E10C09C294B778C0052E8BD /* LeaderView.swift in Sources */,
 				6E58382E294A214000006851 /* CGPoint + Extension.swift in Sources */,
 				6E156A6D29491EE9007717D8 /* KYO.swift in Sources */,
 				6E58382A2949F31900006851 /* PhysicsCategory.swift in Sources */,
