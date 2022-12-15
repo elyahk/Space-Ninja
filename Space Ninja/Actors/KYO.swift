@@ -8,12 +8,15 @@
 import Foundation
 import SpriteKit
 
-enum MusicType {
-    case none
-    case jump
-}
-
 class KYO: SKSpriteNode {
+    enum MusicType {
+        case none
+        case jump
+        case shoot
+        case die
+        case attack
+    }
+
     static var width: CGFloat { 50.0 }
 
     static func addKYO(for scene: GameScene) -> KYO {
@@ -46,7 +49,16 @@ class KYO: SKSpriteNode {
         case .none: break
         case .jump:
             let music = SKAction.playSoundFileNamed(Music.jump, waitForCompletion: true)
-            actions.append(music)
+            actions.insert(music, at: 0)
+        case .shoot:
+            let music = SKAction.playSoundFileNamed(Music.shuriken, waitForCompletion: true)
+            actions.insert(music, at: 0)
+        case .die:
+            let music = SKAction.playSoundFileNamed(Music.kyo_die, waitForCompletion: true)
+            actions.insert(music, at: 0)
+        case .attack:
+            let music = SKAction.playSoundFileNamed(Music.katana_attack, waitForCompletion: true)
+            actions.insert(music, at: 0)
         }
 
         let finalAction = SKAction.sequence(actions)
@@ -77,15 +89,19 @@ class KYO: SKSpriteNode {
 
     func jump() {
         physicsBody?.velocity = CGVector(dx: physicsBody?.velocity.dx ?? 0, dy: 200)
-        makeAction(type: .jump)
+        makeAction(type: .jump, music: .jump)
     }
 
     func attack() {
-        makeAction(type: .attack, music: .jump)
+        makeAction(type: .attack, music: .attack)
     }
 
     func shoot() {
-        makeAction(type: .shoot)
+        makeAction(type: .shoot, music: .shoot)
+    }
+
+    func die() {
+        makeAction(type: .die, music: .die)
     }
 }
 

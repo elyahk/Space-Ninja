@@ -33,7 +33,7 @@
 		6E583853294A2F5F00006851 /* soundeffect_ katana attack.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6E583847294A2F5F00006851 /* soundeffect_ katana attack.mp3 */; };
 		6E583854294A2F5F00006851 /* soundeffect_ shadow die.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6E583848294A2F5F00006851 /* soundeffect_ shadow die.mp3 */; };
 		6E583855294A2F5F00006851 /* soundeffect_ collect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6E583849294A2F5F00006851 /* soundeffect_ collect.mp3 */; };
-		6E583857294A30C100006851 /* soundeffect_ jump.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6E583856294A30C100006851 /* soundeffect_ jump.wav */; };
+		6E583857294A30C100006851 /* soundeffect_jump.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6E583856294A30C100006851 /* soundeffect_jump.wav */; };
 		6E583862294A322900006851 /* soundeffect_mouse_die.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6E583859294A322900006851 /* soundeffect_mouse_die.wav */; };
 		6E583863294A322900006851 /* soundeffect_katana_attack.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6E58385A294A322900006851 /* soundeffect_katana_attack.wav */; };
 		6E583864294A322900006851 /* soundeffect_shuriken.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6E58385B294A322900006851 /* soundeffect_shuriken.wav */; };
@@ -96,7 +96,7 @@
 		6E583847294A2F5F00006851 /* soundeffect_ katana attack.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "soundeffect_ katana attack.mp3"; sourceTree = "<group>"; };
 		6E583848294A2F5F00006851 /* soundeffect_ shadow die.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "soundeffect_ shadow die.mp3"; sourceTree = "<group>"; };
 		6E583849294A2F5F00006851 /* soundeffect_ collect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "soundeffect_ collect.mp3"; sourceTree = "<group>"; };
-		6E583856294A30C100006851 /* soundeffect_ jump.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "soundeffect_ jump.wav"; sourceTree = "<group>"; };
+		6E583856294A30C100006851 /* soundeffect_jump.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = soundeffect_jump.wav; sourceTree = "<group>"; };
 		6E583859294A322900006851 /* soundeffect_mouse_die.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = soundeffect_mouse_die.wav; sourceTree = "<group>"; };
 		6E58385A294A322900006851 /* soundeffect_katana_attack.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = soundeffect_katana_attack.wav; sourceTree = "<group>"; };
 		6E58385B294A322900006851 /* soundeffect_shuriken.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = soundeffect_shuriken.wav; sourceTree = "<group>"; };
@@ -216,7 +216,7 @@
 				6E58385E294A322900006851 /* soundeffect_meteorite_attack.wav */,
 				6E583860294A322900006851 /* soundeffect_kyo_die.wav */,
 				6E583861294A322900006851 /* soundeffect_button_push.wav */,
-				6E583856294A30C100006851 /* soundeffect_ jump.wav */,
+				6E583856294A30C100006851 /* soundeffect_jump.wav */,
 				6E58383E294A2F5E00006851 /* press_play_button.mp3 */,
 				6E58383F294A2F5E00006851 /* shadow_appear.mp3 */,
 			);
@@ -405,7 +405,7 @@
 			files = (
 				6E58384F294A2F5F00006851 /* soundeffect_ kio die.mp3 in Resources */,
 				6E58386A294A322900006851 /* soundeffect_button_push.wav in Resources */,
-				6E583857294A30C100006851 /* soundeffect_ jump.wav in Resources */,
+				6E583857294A30C100006851 /* soundeffect_jump.wav in Resources */,
 				6E583855294A2F5F00006851 /* soundeffect_ collect.mp3 in Resources */,
 				6E58384A294A2F5F00006851 /* background_music.mp3 in Resources */,
 				6E583851294A2F5F00006851 /* soundeffect_ mouse die.mp3 in Resources */,
