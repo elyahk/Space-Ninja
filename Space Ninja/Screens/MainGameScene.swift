@@ -20,8 +20,7 @@ struct MainGameScene: View {
         ZStack {
             SpriteView(scene: scene)
                 .ignoresSafeArea()
-            ;
-            
+
             VStack { VStack {Text("TIME")
                     .foregroundColor(Color.white)
                     .padding(.leading, -10.0)

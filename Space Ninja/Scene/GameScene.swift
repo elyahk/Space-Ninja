@@ -18,13 +18,13 @@ class GameController {
         mice.physicsBody?.isDynamic = true
         mice.physicsBody?.affectedByGravity = true
         mice.anchorPoint = .init(x: 0.5, y: 0.5)
-        mice.position = CGPoint(x: width - 100, y: 200)
+        mice.position = CGPoint(x: width - 100, y: 120)
+        mice.name = Names.mice
+        mice.physicsBody?.contactTestBitMask = PhysicsCategory.shuriken
         mice.physicsBody?.categoryBitMask = PhysicsCategory.mice
         mice.physicsBody?.collisionBitMask = PhysicsCategory.ground
-        mice.physicsBody?.categoryBitMask = PhysicsCategory.kyo
-        mice.name = Names.mice
         mice.physicsBody?.friction = 0
-        mice.physicsBody?.velocity = CGVector(dx: -400, dy: 0)
+        mice.physicsBody?.velocity = CGVector(dx: -100, dy: 0)
         mice.makeAction(type: .run)
 
         scene.addChild(mice)
@@ -108,6 +108,12 @@ extension GameScene: SKPhysicsContactDelegate {
             contact.bodyA.node?.removeFromParent()
         } else if aName == Names.shadow && bName == Names.shuriken {
             contact.bodyB.node?.removeFromParent()
+        } else if aName == Names.shuriken && bName == Names.mice {
+            contact.bodyA.node?.removeFromParent()
+            contact.bodyB.node?.removeFromParent()
+        } else if aName == Names.mice && bName == Names.shuriken {
+            contact.bodyB.node?.removeFromParent()
+            contact.bodyA.node?.removeFromParent()
         }
     }
 }
