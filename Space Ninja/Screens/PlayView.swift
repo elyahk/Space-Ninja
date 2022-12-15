@@ -9,8 +9,6 @@ import SwiftUI
 
 struct PlayView: View {
     var body: some View {
-        
-        
         ZStack{
         VStack {
             HStack{
