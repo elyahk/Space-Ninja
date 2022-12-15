@@ -34,14 +34,14 @@
 		6E583854294A2F5F00006851 /* soundeffect_ shadow die.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6E583848294A2F5F00006851 /* soundeffect_ shadow die.mp3 */; };
 		6E583855294A2F5F00006851 /* soundeffect_ collect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6E583849294A2F5F00006851 /* soundeffect_ collect.mp3 */; };
 		6E583857294A30C100006851 /* soundeffect_ jump.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6E583856294A30C100006851 /* soundeffect_ jump.wav */; };
-		6E583862294A322900006851 /* soundeffect_ mouse die.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6E583859294A322900006851 /* soundeffect_ mouse die.wav */; };
-		6E583863294A322900006851 /* soundeffect_ katana attack.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6E58385A294A322900006851 /* soundeffect_ katana attack.wav */; };
-		6E583864294A322900006851 /* soundeffect_ shuriken.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6E58385B294A322900006851 /* soundeffect_ shuriken.wav */; };
-		6E583865294A322900006851 /* soundeffect_ shadow die.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6E58385C294A322900006851 /* soundeffect_ shadow die.wav */; };
-		6E583866294A322900006851 /* soundeffect_ collect.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6E58385D294A322900006851 /* soundeffect_ collect.wav */; };
-		6E583867294A322900006851 /* soundeffect_ meteorite attack.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6E58385E294A322900006851 /* soundeffect_ meteorite attack.wav */; };
-		6E583869294A322900006851 /* soundeffect_ kio die.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6E583860294A322900006851 /* soundeffect_ kio die.wav */; };
-		6E58386A294A322900006851 /* soundeffect_ button push.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6E583861294A322900006851 /* soundeffect_ button push.wav */; };
+		6E583862294A322900006851 /* soundeffect_mouse_die.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6E583859294A322900006851 /* soundeffect_mouse_die.wav */; };
+		6E583863294A322900006851 /* soundeffect_katana_attack.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6E58385A294A322900006851 /* soundeffect_katana_attack.wav */; };
+		6E583864294A322900006851 /* soundeffect_shuriken.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6E58385B294A322900006851 /* soundeffect_shuriken.wav */; };
+		6E583865294A322900006851 /* soundeffect_shadow_die.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6E58385C294A322900006851 /* soundeffect_shadow_die.wav */; };
+		6E583866294A322900006851 /* soundeffect_collect.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6E58385D294A322900006851 /* soundeffect_collect.wav */; };
+		6E583867294A322900006851 /* soundeffect_meteorite_attack.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6E58385E294A322900006851 /* soundeffect_meteorite_attack.wav */; };
+		6E583869294A322900006851 /* soundeffect_kyo_die.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6E583860294A322900006851 /* soundeffect_kyo_die.wav */; };
+		6E58386A294A322900006851 /* soundeffect_button_push.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6E583861294A322900006851 /* soundeffect_button_push.wav */; };
 		6E6B311129477845001C9D48 /* Space_NinjaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6B311029477845001C9D48 /* Space_NinjaApp.swift */; };
 		6E6B311329477845001C9D48 /* MainGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6B311229477845001C9D48 /* MainGameScene.swift */; };
 		6E6B311529477846001C9D48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E6B311429477846001C9D48 /* Assets.xcassets */; };
@@ -97,14 +97,14 @@
 		6E583848294A2F5F00006851 /* soundeffect_ shadow die.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "soundeffect_ shadow die.mp3"; sourceTree = "<group>"; };
 		6E583849294A2F5F00006851 /* soundeffect_ collect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "soundeffect_ collect.mp3"; sourceTree = "<group>"; };
 		6E583856294A30C100006851 /* soundeffect_ jump.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "soundeffect_ jump.wav"; sourceTree = "<group>"; };
-		6E583859294A322900006851 /* soundeffect_ mouse die.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "soundeffect_ mouse die.wav"; sourceTree = "<group>"; };
-		6E58385A294A322900006851 /* soundeffect_ katana attack.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "soundeffect_ katana attack.wav"; sourceTree = "<group>"; };
-		6E58385B294A322900006851 /* soundeffect_ shuriken.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "soundeffect_ shuriken.wav"; sourceTree = "<group>"; };
-		6E58385C294A322900006851 /* soundeffect_ shadow die.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "soundeffect_ shadow die.wav"; sourceTree = "<group>"; };
-		6E58385D294A322900006851 /* soundeffect_ collect.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "soundeffect_ collect.wav"; sourceTree = "<group>"; };
-		6E58385E294A322900006851 /* soundeffect_ meteorite attack.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "soundeffect_ meteorite attack.wav"; sourceTree = "<group>"; };
-		6E583860294A322900006851 /* soundeffect_ kio die.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "soundeffect_ kio die.wav"; sourceTree = "<group>"; };
-		6E583861294A322900006851 /* soundeffect_ button push.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "soundeffect_ button push.wav"; sourceTree = "<group>"; };
+		6E583859294A322900006851 /* soundeffect_mouse_die.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = soundeffect_mouse_die.wav; sourceTree = "<group>"; };
+		6E58385A294A322900006851 /* soundeffect_katana_attack.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = soundeffect_katana_attack.wav; sourceTree = "<group>"; };
+		6E58385B294A322900006851 /* soundeffect_shuriken.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = soundeffect_shuriken.wav; sourceTree = "<group>"; };
+		6E58385C294A322900006851 /* soundeffect_shadow_die.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = soundeffect_shadow_die.wav; sourceTree = "<group>"; };
+		6E58385D294A322900006851 /* soundeffect_collect.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = soundeffect_collect.wav; sourceTree = "<group>"; };
+		6E58385E294A322900006851 /* soundeffect_meteorite_attack.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = soundeffect_meteorite_attack.wav; sourceTree = "<group>"; };
+		6E583860294A322900006851 /* soundeffect_kyo_die.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = soundeffect_kyo_die.wav; sourceTree = "<group>"; };
+		6E583861294A322900006851 /* soundeffect_button_push.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = soundeffect_button_push.wav; sourceTree = "<group>"; };
 		6E6B310D29477845001C9D48 /* Space Ninja.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Space Ninja.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E6B311029477845001C9D48 /* Space_NinjaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Space_NinjaApp.swift; sourceTree = "<group>"; };
 		6E6B311229477845001C9D48 /* MainGameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGameScene.swift; sourceTree = "<group>"; };
@@ -143,6 +143,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6E3576DE294B7E970095BCA4 /* music */ = {
+			isa = PBXGroup;
+			children = (
+				6E58383D294A2F5E00006851 /* background_music.mp3 */,
+			);
+			path = music;
+			sourceTree = "<group>";
+		};
 		6E58382F294A216C00006851 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -199,8 +207,16 @@
 		6E58383C294A2F5E00006851 /* Background Music */ = {
 			isa = PBXGroup;
 			children = (
+				6E3576DE294B7E970095BCA4 /* music */,
+				6E583859294A322900006851 /* soundeffect_mouse_die.wav */,
+				6E58385A294A322900006851 /* soundeffect_katana_attack.wav */,
+				6E58385B294A322900006851 /* soundeffect_shuriken.wav */,
+				6E58385C294A322900006851 /* soundeffect_shadow_die.wav */,
+				6E58385D294A322900006851 /* soundeffect_collect.wav */,
+				6E58385E294A322900006851 /* soundeffect_meteorite_attack.wav */,
+				6E583860294A322900006851 /* soundeffect_kyo_die.wav */,
+				6E583861294A322900006851 /* soundeffect_button_push.wav */,
 				6E583856294A30C100006851 /* soundeffect_ jump.wav */,
-				6E58383D294A2F5E00006851 /* background_music.mp3 */,
 				6E58383E294A2F5E00006851 /* press_play_button.mp3 */,
 				6E58383F294A2F5E00006851 /* shadow_appear.mp3 */,
 			);
@@ -221,21 +237,6 @@
 				6E583849294A2F5F00006851 /* soundeffect_ collect.mp3 */,
 			);
 			path = "Sound Fxs";
-			sourceTree = "<group>";
-		};
-		6E583858294A322900006851 /* wav */ = {
-			isa = PBXGroup;
-			children = (
-				6E583859294A322900006851 /* soundeffect_ mouse die.wav */,
-				6E58385A294A322900006851 /* soundeffect_ katana attack.wav */,
-				6E58385B294A322900006851 /* soundeffect_ shuriken.wav */,
-				6E58385C294A322900006851 /* soundeffect_ shadow die.wav */,
-				6E58385D294A322900006851 /* soundeffect_ collect.wav */,
-				6E58385E294A322900006851 /* soundeffect_ meteorite attack.wav */,
-				6E583860294A322900006851 /* soundeffect_ kio die.wav */,
-				6E583861294A322900006851 /* soundeffect_ button push.wav */,
-			);
-			path = wav;
 			sourceTree = "<group>";
 		};
 		6E6B310429477845001C9D48 = {
@@ -261,7 +262,6 @@
 		6E6B310F29477845001C9D48 /* Space Ninja */ = {
 			isa = PBXGroup;
 			children = (
-				6E583858294A322900006851 /* wav */,
 				6E58383B294A2F5E00006851 /* MUSIC */,
 				6E6B311029477845001C9D48 /* Space_NinjaApp.swift */,
 				6E58383A294A2C4B00006851 /* Screens */,
@@ -404,24 +404,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E58384F294A2F5F00006851 /* soundeffect_ kio die.mp3 in Resources */,
-				6E58386A294A322900006851 /* soundeffect_ button push.wav in Resources */,
+				6E58386A294A322900006851 /* soundeffect_button_push.wav in Resources */,
 				6E583857294A30C100006851 /* soundeffect_ jump.wav in Resources */,
 				6E583855294A2F5F00006851 /* soundeffect_ collect.mp3 in Resources */,
 				6E58384A294A2F5F00006851 /* background_music.mp3 in Resources */,
 				6E583851294A2F5F00006851 /* soundeffect_ mouse die.mp3 in Resources */,
-				6E583864294A322900006851 /* soundeffect_ shuriken.wav in Resources */,
+				6E583864294A322900006851 /* soundeffect_shuriken.wav in Resources */,
 				6E58384B294A2F5F00006851 /* press_play_button.mp3 in Resources */,
-				6E583862294A322900006851 /* soundeffect_ mouse die.wav in Resources */,
+				6E583862294A322900006851 /* soundeffect_mouse_die.wav in Resources */,
 				6E583850294A2F5F00006851 /* soundeffect_ button push.mp3 in Resources */,
 				6E583853294A2F5F00006851 /* soundeffect_ katana attack.mp3 in Resources */,
-				6E583863294A322900006851 /* soundeffect_ katana attack.wav in Resources */,
+				6E583863294A322900006851 /* soundeffect_katana_attack.wav in Resources */,
 				6E6B311829477846001C9D48 /* Preview Assets.xcassets in Resources */,
-				6E583869294A322900006851 /* soundeffect_ kio die.wav in Resources */,
+				6E583869294A322900006851 /* soundeffect_kyo_die.wav in Resources */,
 				6E6B311529477846001C9D48 /* Assets.xcassets in Resources */,
-				6E583867294A322900006851 /* soundeffect_ meteorite attack.wav in Resources */,
-				6E583865294A322900006851 /* soundeffect_ shadow die.wav in Resources */,
+				6E583867294A322900006851 /* soundeffect_meteorite_attack.wav in Resources */,
+				6E583865294A322900006851 /* soundeffect_shadow_die.wav in Resources */,
 				6E583854294A2F5F00006851 /* soundeffect_ shadow die.mp3 in Resources */,
-				6E583866294A322900006851 /* soundeffect_ collect.wav in Resources */,
+				6E583866294A322900006851 /* soundeffect_collect.wav in Resources */,
 				6E58384D294A2F5F00006851 /* soundeffect_ meteorite attack.mp3 in Resources */,
 				6E583852294A2F5F00006851 /* soundeffect_ shuriken.mp3 in Resources */,
 				6E58384E294A2F5F00006851 /* soundeffect_ jump.mp3 in Resources */,
