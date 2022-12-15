@@ -33,6 +33,28 @@ class Mice: SKSpriteNode {
             self?.removeFromParent()
         }
     }
+
+    static func addMice(type: EnemyType, for scene: GameScene) -> Mice {
+        let mice = Mice(imageNamed: "")
+        mice.size = CGSize(width: 45, height: 45)
+        mice.physicsBody = SKPhysicsBody(rectangleOf: mice.size)
+        mice.physicsBody?.allowsRotation = false
+        mice.physicsBody?.isDynamic = true
+        mice.physicsBody?.affectedByGravity = true
+        mice.anchorPoint = .init(x: 0.5, y: 0.5)
+        mice.position = CGPoint(x: width - 100, y: 120)
+        mice.name = Names.mice
+        mice.physicsBody?.contactTestBitMask = PhysicsCategory.shuriken
+        mice.physicsBody?.categoryBitMask = PhysicsCategory.mice
+        mice.physicsBody?.collisionBitMask = PhysicsCategory.ground
+        mice.physicsBody?.friction = 0
+        mice.physicsBody?.velocity = CGVector(dx: -100, dy: 0)
+        mice.makeAction(type: .run)
+
+        scene.addChild(mice)
+
+        return mice
+    }
 }
 
 

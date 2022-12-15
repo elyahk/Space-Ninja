@@ -9,6 +9,8 @@ import Foundation
 import SpriteKit
 
 class KYO: SKSpriteNode {
+    var isDead = false
+
     enum MusicType {
         case none
         case jump
@@ -30,19 +32,22 @@ class KYO: SKSpriteNode {
         kyo.position = CGPoint(x: 10, y: 200)
         kyo.physicsBody?.categoryBitMask = PhysicsCategory.kyo
         kyo.physicsBody?.collisionBitMask = PhysicsCategory.ground
+        kyo.physicsBody?.contactTestBitMask = PhysicsCategory.mice
         kyo.physicsBody?.friction = 0
         scene.addChild(kyo)
 
         return kyo
     }
 
-    func makeAction(type action: KYOAction, repeating: Bool = false, music: MusicType = .none) {
+    func makeAction(type action: KYOAction, repeating: Bool = false, timePerFrame: TimeInterval = 0.1, music: MusicType = .none, completion: @escaping () -> Void = { }) {
+        guard isDead == false else { return }
+
         removeAllActions()
 
         let actionTextures: [SKTexture] = action.actionNames.map {
             SKTexture(imageNamed: $0)
         }
-        let action = SKAction.animate(with: actionTextures, timePerFrame: 0.1, resize: false, restore: true)
+        let action = SKAction.animate(with: actionTextures, timePerFrame: timePerFrame, resize: false, restore: true)
         var actions = [action]
 
         switch music {
@@ -55,19 +60,17 @@ class KYO: SKSpriteNode {
             actions.insert(music, at: 0)
         case .die:
             let music = SKAction.playSoundFileNamed(Music.kyo_die, waitForCompletion: true)
-            actions.insert(music, at: 0)
+            actions.append(music)
         case .attack:
             let music = SKAction.playSoundFileNamed(Music.katana_attack, waitForCompletion: true)
             actions.append(music)
         }
 
-        let finalAction = SKAction.sequence(actions)
+        let sequenceActions = SKAction.sequence(actions)
+        let finalAction = repeating ? SKAction.repeatForever(sequenceActions) : sequenceActions
 
-        run(SKAction.repeat(finalAction, count: repeating ? 100 : 1)) {
-            if !repeating {
-                self.texture = SKTexture(imageNamed: "kyo_attack_1")
-                self.size = CGSize(width: KYO.width, height: KYO.width)
-            }
+        run(finalAction) {
+            completion()
         }
     }
 
@@ -101,7 +104,11 @@ class KYO: SKSpriteNode {
     }
 
     func die() {
-        makeAction(type: .die, music: .die)
+        makeAction(type: .die, timePerFrame: 0.02, music: .die)
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(300)) { [weak self] in
+            self?.removeFromParent()
+        }
+        isDead = true
     }
 }
 

@@ -11,25 +11,7 @@ import SpriteKit
 
 class GameController {
     func makeEnemy(type: EnemyType, for scene: GameScene) -> Mice {
-        let mice = Mice(imageNamed: "")
-        mice.size = CGSize(width: 45, height: 45)
-        mice.physicsBody = SKPhysicsBody(rectangleOf: mice.size)
-        mice.physicsBody?.allowsRotation = false
-        mice.physicsBody?.isDynamic = true
-        mice.physicsBody?.affectedByGravity = true
-        mice.anchorPoint = .init(x: 0.5, y: 0.5)
-        mice.position = CGPoint(x: width - 100, y: 120)
-        mice.name = Names.mice
-        mice.physicsBody?.contactTestBitMask = PhysicsCategory.shuriken
-        mice.physicsBody?.categoryBitMask = PhysicsCategory.mice
-        mice.physicsBody?.collisionBitMask = PhysicsCategory.ground
-        mice.physicsBody?.friction = 0
-        mice.physicsBody?.velocity = CGVector(dx: -100, dy: 0)
-        mice.makeAction(type: .run)
-
-        scene.addChild(mice)
-
-        return mice
+        return Mice.addMice(type: type, for: scene)
     }
 }
 
@@ -78,8 +60,6 @@ class GameScene: SKScene {
                 shoot()
             } else if name == Names.attackButton {
                 attack()
-            } else if name == Names.attackButton {
-
             }
         }
 
@@ -104,12 +84,17 @@ extension GameScene: SKPhysicsContactDelegate {
         let aName = contact.bodyA.node?.name
         let bName = contact.bodyB.node?.name
 
+        guard let aCategory = contact.bodyA.node?.physicsBody?.categoryBitMask,
+              let bCategory = contact.bodyB.node?.physicsBody?.categoryBitMask else { return }
+
         if aName == Names.shuriken && bName == Names.shadow {
             contact.bodyA.node?.removeFromParent()
         } else if aName == Names.shadow && bName == Names.shuriken {
             contact.bodyB.node?.removeFromParent()
         } else if aName == Names.shuriken && bName == Names.mice || aName == Names.mice && bName == Names.shuriken {
             miceDie(contact.bodyA.node, contact.bodyB.node)
+        } else if aCategory | bCategory == PhysicsCategory.kyo | PhysicsCategory.mice {
+            kyoDie(contact.bodyA.node, contact.bodyB.node)
         }
     }
 
@@ -123,5 +108,17 @@ extension GameScene: SKPhysicsContactDelegate {
         }
 
         bacgroundScene.ballCount += 1
+    }
+
+    func kyoDie(_ nodeA: SKNode?, _ nodeB: SKNode?) {
+        if let kyo = nodeA as? KYO, let mice = nodeB as? Mice {
+            mice.die()
+            kyo.die()
+        } else if let kyo = nodeB as? KYO, let mice = nodeA as? Mice {
+            mice.die()
+            kyo.die()
+        }
+
+        bacgroundScene.lifeCount -= 1
     }
 }
