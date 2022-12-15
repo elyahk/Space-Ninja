@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MainScreen: View {
+    @State var playGame: Bool = false
+
     var body: some View {
         ZStack {
             Image("fbg1")
@@ -15,20 +17,7 @@ struct MainScreen: View {
                 .ignoresSafeArea()
                 .frame(width: width, height: height)
                 .scaledToFill()
-            
-           
-            Button(action: {
 
-            }) {
-                Image("sbf")
-                    .resizable()
-                    .frame(width: 300, height: 150)
-                    .scaledToFill()
-            }
-            .frame(width: 300, height: 150)
-            .position(x: width/2, y: height/2 + 70)
-
-            
             Button(action: {
 
             }) {
@@ -40,8 +29,22 @@ struct MainScreen: View {
             }
             .frame(width: 300, height: 150)
             .position(x: width/2 + 10, y: height/2 + 145)
+           
+            Button(action: {
+                playGame.toggle()
+            }) {
+                Image("sbf")
+                    .resizable()
+                    .frame(width: 300, height: 150)
+                    .scaledToFill()
+            }
+            .frame(width: 300, height: 150)
+            .position(x: width/2, y: height/2 + 70)
+
         }
-        
+        .fullScreenCover(isPresented: $playGame, content: {
+            MainGameScene()
+        })
     }
 }
 
