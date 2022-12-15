@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4D8BA4E8294A2A5000E9FDFF /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8BA4E7294A2A5000E9FDFF /* MainScreen.swift */; };
 		6E10C09C294B778C0052E8BD /* LeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E10C09B294B778C0052E8BD /* LeaderView.swift */; };
+		6E10C6B2294BDF850045EFDA /* ninjatheme.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6E10C6B1294BDF850045EFDA /* ninjatheme.mp3 */; };
 		6E156A6D29491EE9007717D8 /* KYO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E156A6C29491EE9007717D8 /* KYO.swift */; };
 		6E156A6F29491F07007717D8 /* Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E156A6E29491F07007717D8 /* Shadow.swift */; };
 		6E156A7129491F1D007717D8 /* Mice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E156A7029491F1D007717D8 /* Mice.swift */; };
@@ -74,6 +75,7 @@
 /* Begin PBXFileReference section */
 		4D8BA4E7294A2A5000E9FDFF /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
 		6E10C09B294B778C0052E8BD /* LeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderView.swift; sourceTree = "<group>"; };
+		6E10C6B1294BDF850045EFDA /* ninjatheme.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = ninjatheme.mp3; path = "../../../../../../Dropbox (Developer Academy)/NANO CHALLENGE 2/MUSIC/Background Music/ninjatheme.mp3"; sourceTree = "<group>"; };
 		6E156A6C29491EE9007717D8 /* KYO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KYO.swift; sourceTree = "<group>"; };
 		6E156A6E29491F07007717D8 /* Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shadow.swift; sourceTree = "<group>"; };
 		6E156A7029491F1D007717D8 /* Mice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mice.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 		6E3576DE294B7E970095BCA4 /* music */ = {
 			isa = PBXGroup;
 			children = (
+				6E10C6B1294BDF850045EFDA /* ninjatheme.mp3 */,
 				6E58383D294A2F5E00006851 /* background_music.mp3 */,
 			);
 			path = music;
@@ -424,6 +427,7 @@
 				6E6B311829477846001C9D48 /* Preview Assets.xcassets in Resources */,
 				6E583869294A322900006851 /* soundeffect_kyo_die.wav in Resources */,
 				6E6B311529477846001C9D48 /* Assets.xcassets in Resources */,
+				6E10C6B2294BDF850045EFDA /* ninjatheme.mp3 in Resources */,
 				6E583867294A322900006851 /* soundeffect_meteorite_attack.wav in Resources */,
 				6E583865294A322900006851 /* soundeffect_shadow_die.wav in Resources */,
 				6E583854294A2F5F00006851 /* soundeffect_ shadow die.mp3 in Resources */,
