@@ -12,30 +12,19 @@ class GameScene: SKScene {
     var console: Console = .init()
     var bacgroundScene: BackgroundScene = .init()
     var shurikens: [SKSpriteNode] = []
-    lazy var shadow: Shadow = {
-        let shadow = Shadow.makeShadow()
-
-        return shadow
-    }()
-
-    lazy var kyo: KYO = {
-        return KYO.makeKYO()
-    }()
+    lazy var shadow: Shadow = { Shadow.addShadow(for: self) }()
+    lazy var kyo: KYO = { KYO.addKYO(for: self) }()
 
     override func didMove(to view: SKView) {
         configure()
     }
 
     private func configure() {
+        _ = kyo
+        _ = shadow
         configurePhysics()
         bacgroundScene.configure(for: self)
-        configureCharacters()
         console.configure(for: self)
-    }
-
-    private func configureCharacters() {
-        addChild(kyo)
-        addChild(shadow)
     }
 
     private func configurePhysics() {
