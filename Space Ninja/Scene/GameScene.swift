@@ -30,20 +30,12 @@ class GameScene: SKScene {
         configurePhysics()
         bacgroundScene.configure(for: self)
         configureCharacters()
-        configureConsole()
+        console.configure(for: self)
     }
 
     private func configureCharacters() {
         addChild(kyo)
         addChild(shadow)
-    }
-
-    private func configureConsole() {
-        addChild(console.leftButton)
-        addChild(console.rightButton)
-        addChild(console.jumpButton)
-        addChild(console.shootButton)
-        addChild(console.attackButton)
     }
 
     private func configurePhysics() {
