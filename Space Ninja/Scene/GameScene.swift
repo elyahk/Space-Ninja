@@ -17,7 +17,7 @@ class GameScene: SKScene {
     var console: Console = .init()
 
     lazy var stage: SKSpriteNode = {
-        let stage = SKSpriteNode(color: .systemGray, size: .init(width: width, height: 80))
+        let stage = SKSpriteNode(texture: SKTexture(imageNamed: "ground_01"), size: .init(width: width, height: 80))
         stage.anchorPoint = .init(x: 0.5, y: 0.5)
         stage.position = .init(x: width / 2, y: stage.size.height/2)
         stage.physicsBody = SKPhysicsBody(rectangleOf: stage.size)
@@ -37,6 +37,48 @@ class GameScene: SKScene {
         stage.zPosition = -10
 
         return stage
+    }()
+
+    lazy var lifeIcon: SKSpriteNode = {
+        let stage = SKSpriteNode(texture: SKTexture(imageNamed: .lifeIcon))
+        stage.size = .init(width: 30, height: 30)
+        stage.anchorPoint = .init(x: 0.5, y: 0.5)
+        stage.position = .init(x: 35, y: height - 45 )
+        stage.zPosition = -2
+
+        return stage
+    }()
+
+    lazy var lifeText: SKLabelNode = {
+        var view = SKLabelNode()
+        view = SKLabelNode(fontNamed: "AvenirNext-Bold")
+        view.text = "0"
+        view.horizontalAlignmentMode = .left
+        view.fontSize = 35
+        view.position = .init(x: lifeIcon.position.x + lifeIcon.size.width / 2 + 10, y: lifeIcon.position.y - 10)
+
+        return view
+    }()
+
+    lazy var ballIcon: SKSpriteNode = {
+        let stage = SKSpriteNode(texture: SKTexture(imageNamed: .woolBallIcon))
+        stage.size = .init(width: 30, height: 30)
+        stage.anchorPoint = .init(x: 0.5, y: 0.5)
+        stage.position = .init(x: 140, y: height - 45 )
+        stage.zPosition = -2
+
+        return stage
+    }()
+
+    lazy var ballText: SKLabelNode = {
+        var view = SKLabelNode()
+        view = SKLabelNode(fontNamed: "AvenirNext-Bold")
+        view.text = "0"
+        view.horizontalAlignmentMode = .left
+        view.fontSize = 35
+        view.position = .init(x: ballIcon.position.x + ballIcon.size.width / 2 + 10, y: ballIcon.position.y - 10)
+
+        return view
     }()
 
     lazy var planet1: SKSpriteNode = {
@@ -98,6 +140,10 @@ class GameScene: SKScene {
         physicsWorld.gravity = CGVector(dx: 0.0, dy: -3.0)
         physicsWorld.contactDelegate = self
         addChild(background)
+        addChild(lifeIcon)
+        addChild(lifeText)
+        addChild(ballIcon)
+        addChild(ballText)
         addChild(planet1)
         addChild(planet2)
         addChild(planet3)
