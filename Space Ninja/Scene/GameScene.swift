@@ -42,7 +42,7 @@ class GameController {
     func addMeteor() {
         guard let randomType = MeteorType.allCases.randomElement() else { return }
         for _ in 0..<meteorCount {
-            let random = CGFloat.random(in: 100...(width - 50))
+            let random = CGFloat.random(in: 0...width)
             _ = Meteor.addMeteor(type: randomType, for: scene, position: .init(x: random, y: height - 50))
             if meteorLowSpeed > 40, meteorHighSpeed > 50 {
                 meteorLowSpeed -= 80
@@ -165,6 +165,8 @@ extension GameScene: SKPhysicsContactDelegate {
             kyoDie(contact.bodyA.node, contact.bodyB.node)
         } else if aCategory | bCategory == PhysicsCategory.meteor | PhysicsCategory.ground {
             removeMeteor(contact.bodyA.node, contact.bodyB.node)
+        } else if aCategory | bCategory == PhysicsCategory.shuriken | PhysicsCategory.wall {
+            removeShuriken(contact.bodyA.node, contact.bodyB.node)
         }
     }
 
@@ -172,6 +174,14 @@ extension GameScene: SKPhysicsContactDelegate {
         if PhysicsCategory.meteor == nodeA?.physicsBody?.categoryBitMask {
             nodeA?.removeFromParent()
         } else if PhysicsCategory.meteor == nodeB?.physicsBody?.categoryBitMask {
+            nodeB?.removeFromParent()
+        }
+    }
+    
+    func removeShuriken(_ nodeA: SKNode?, _ nodeB: SKNode?) {
+        if PhysicsCategory.shuriken == nodeA?.physicsBody?.categoryBitMask {
+            nodeA?.removeFromParent()
+        } else if PhysicsCategory.shuriken == nodeB?.physicsBody?.categoryBitMask {
             nodeB?.removeFromParent()
         }
     }

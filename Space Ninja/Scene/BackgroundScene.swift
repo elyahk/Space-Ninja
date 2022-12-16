@@ -20,6 +20,21 @@ class BackgroundScene {
             ballText.text = "\(ballCount)"
         }
     }
+    
+    lazy var wall: SKSpriteNode = {
+        let stage = SKSpriteNode(color: .clear, size: .init(width: 10, height: height))
+        stage.anchorPoint = .init(x: 0.5, y: 0.5)
+        stage.position = .init(x: width - 5, y: stage.size.height/2)
+        stage.physicsBody = SKPhysicsBody(rectangleOf: stage.size)
+        stage.physicsBody?.affectedByGravity = false
+        stage.physicsBody?.isDynamic = false
+        stage.physicsBody?.categoryBitMask = PhysicsCategory.wall
+        stage.physicsBody?.contactTestBitMask = PhysicsCategory.shuriken
+        stage.zPosition = -1
+        stage.physicsBody?.friction = 0
+
+        return stage
+    }()
 
     lazy var stage: SKSpriteNode = {
         let stage = SKSpriteNode(texture: SKTexture(imageNamed: "ground_01"), size: .init(width: width, height: 80))
@@ -207,6 +222,7 @@ extension BackgroundScene {
         scene.addChild(lifeText)
         scene.addChild(ballIcon)
         scene.addChild(ballText)
+        scene.addChild(wall)
         planets.forEach { scene.addChild($0) }
     }
 }
