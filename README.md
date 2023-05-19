@@ -11,9 +11,13 @@ Space Ninja Cats is an 8-bit style arcade game under development, built entirely
 
 
 Plot
+
+
 The game follows the adventures of Kyo, a space ninja cat, on a mission to save his brother from the clutches of the nefarious pirate Shadow. Through levels teeming with challenges and enemies, players will soon be able to help Kyo navigate danger and achieve victory.
 
 Features
+
+
 8-bit style game art and design for a nostalgic gaming experience
 Game assets generated through artificial intelligence
 Detailed handcrafted animations for an immersive gaming experience
@@ -27,5 +31,8 @@ Please note that Space Ninja Cats is currently under development. While the game
 
 
 
-Educational Purpose
+Educational Purpose:
+
+
+
 This project was created with an educational purpose in mind. Beyond being a fun game to play, it also serves as a resource for those interested in learning SwiftUI, SpriteKit, artificial intelligence, or game development in general. We invite everyone to explore the code, ask questions, and contribute!
