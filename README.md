@@ -1,4 +1,4 @@
-# Space-Ninja
+# Space-Ninja-Cats
 
 ![poster_space-1](https://github.com/elyahk/Space-Ninja/assets/113534388/2128c1dd-e3ac-4d33-9949-8deaba662a82)
 
